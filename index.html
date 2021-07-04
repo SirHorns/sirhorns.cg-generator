@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Girl Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="content">
+        <h2>Cat Girl Generator</h2>
+        <!-- Cat Card: -->
+        <br>
+        <div id="wrapper">
+            <div id="" class="catgirl">
+                <div class="basicinfo package">
+                    <h4>Basic Info</h4>
+                    <div>
+                        <b>General: </b> <br>
+                        Name: <span class="name"></span><br>
+                        Age: <span class="age"></span><br>
+                        Hieght: <span class="hieght"></span><br>
+                        Wight: <span class="wieght"></span><br>
+                        SkinTone: <span class="skinTone"></span><br>
+                        Cup Size: <span class="cupSize"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>Eyes: </b><br>
+                        hasCatEyes: <span class="hasCatEyes"></span><br>
+                        eyeColor: <span class="eyeColor"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>HairStyle: </b>
+                        <br>
+                        hairColor: <span class="hairColor"></span><br>
+                        hairType: <span class="hairType"></span><br>
+                        hairCut: <span class="hairCut"></span><br>
+                        hairLength: <span class="hairLength"></span><br>
+                        earColorMatches: <span class="earColorMatches"></span><br>
+                        tailColorMatches: <span class="tailColorMatches"></span>
+                    </div>
+
+                </div>
+                <br class="sectionBreak">
+                <div class="catinfo package">
+                    <h4>Cat Info</h4>
+                    <div>
+                        <b>Eyes: </b><br>
+                        pupilType: <span class="pupilType"></span><br>
+                        pupilSize: <span class="pupilSize"></span><br>
+                        eyeColor: <span class="eyeColor"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>Ears: </b><br>
+                        earLength: <span class="earLength"></span><br>
+                        earSize: <span class="earSize"></span><br>
+                        earPattern: <span class="earPattern"></span>
+                        earColors: <span class="earColors"></span><br>
+                        furLength: <span class="furLength"></span><br>
+                        isFluffy: <span class="isFluffy"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>Claws: </b><br>
+                        hasClaws: <span class="hasClaws"></span><br>
+                        length: <span class="length"></span><br>
+                        sharpness: <span class="sharpness"></span><br>
+                        color: <span class="color"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>Tail: </b><br>
+                        tailLength: <span class="tailLength"></span><br>
+                        tailSize: <span class="tailSize"></span><br>
+                        tailPattern: <span class="tailPattern"></span>
+                        tailColors: <span class="tailColors"></span><br>
+                        tailHairLength: <span class="tailHairLength"></span><br>
+                        isFluffy: <span class="isFluffy"></span>
+                    </div>
+                </div>
+                <br class="sectionBreak">
+                <div class="miscinfo package">
+                    <h4>Misc Info: </h4><br>
+                    <div>
+                        <b>Fun Facts: </b><br>
+                        bloodType: <span class="bloodType"></span><br>
+                        starSign: <span class="starSign"></span>
+                    </div>
+                    <br class="sectionBreak">
+                    <div>
+                        <b>Traits: </b><br>
+                        Trait: <span class="traitPositive"></span><br>
+                        Trait: <span class="traitNeutral"></span><br>
+                        Trait: <span class="traitNegative"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons: -->
+        <div id="button-container">
+            <button onclick="exportToCatCard()">Generate Catgirl</button>
+            <button onclick="onDownload()">Download Catgirl JSON</button>
+        </div>
+
+        <!-- SCRIPTS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </div>
+
+
+    <!-- Notes: -->
+    <!-- 
+        https://stackoverflow.com/questions/27266901/display-javascript-object-in-html 
+    -->
+</body>
+
+</html>

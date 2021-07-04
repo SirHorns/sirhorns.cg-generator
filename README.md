@@ -1,2 +1,2 @@
-# sirhorns.cg-generator
-A simple Catgirl generator.
+# cgg-generator
+## Cat Girl Generator
