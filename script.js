@@ -642,7 +642,7 @@ function download(content, fileName, contentType) {
 }
 
 function onDownload() {
-    download(JSON.stringify(newCat, null, 2), "Cat-Girl-" + catGirlArray[0] + ".json", "text/plain");
+    download(JSON.stringify(newCat, null, 2), "Cat-Girl-" + newCat + ".json", "text/plain");
 }
 
 /* function doThing() {
