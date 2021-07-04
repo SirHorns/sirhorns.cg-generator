@@ -405,9 +405,9 @@ function getCatInfoPackage(catClaws) {
     let tailLength = ["short", "medium", "long"];
     let tailSize = ["small", "medium", "large"];
     let tailPattern = ["spotted", "solid", "patched"];
-    CIP.tail.tailLength = tailLength[getIndexFloor(earPattern.length, 1)];
-    CIP.tail.tailSize = tailSize[getIndexFloor(earPattern.length, 1)];
-    CIP.tail.tailPattern = tailPattern[getIndexFloor(earPattern.length, 1)];
+    CIP.tail.tailLength = tailLength[getIndexFloor(tailLength.length, 1)];
+    CIP.tail.tailSize = tailSize[getIndexFloor(tailSize.length, 1)];
+    CIP.tail.tailPattern = tailPattern[getIndexFloor(tailPattern.length, 1)];
     CIP.tail.tailColors = [];
 
 
