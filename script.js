@@ -28,34 +28,7 @@ let skinTones = ["Ivory", "Beige", "Alabaster", "Honey", "Carotenoid", "Tan", "C
 
 let cupSizes = ["AA", "A", "B", "C", "D", "E", "F", "G", "H"];
 
-/* Name: Bianca
-Hieght: 204.81cm
-Wieght: 73.72kg
-Age: 38
-Blood Type: AB-
-Star Sign: Libra
-Personality Traits: 
- Trait: Compassionate
- Trait: Excitable
- Trait: Authoritarian */
-
-const avgW = 0;
-const avgH = 0;
-
-
-
 const bloodType = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
-
-/* function CatGirl() {
-    this.name = getName();
-    this.hieght = getHieght();
-    this.wieght = getWeight();
-    this.bloodType = getBoodType();
-    this.age = getAge();
-    this.birthday = "";
-    this.starSign = getStarSign();
-    this.traits = getPersoanlityTraits();
-} */
 
 function CatGirl() {
     this.basicInfo = {
@@ -70,7 +43,7 @@ function CatGirl() {
             hasCatEyes: "false",
             eyeColor: "",
         },
-        hairStyle: {
+        hair: {
             hairColor: "",
             hairType: "",
             hairCut: "",
@@ -83,8 +56,8 @@ function CatGirl() {
     this.catInfo = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
-            pupilType: "",
-            pupilSize: "",
+            eyePupilType: "",
+            eyePupilSize: "",
             eyeColor: ""
         },
         ears: {
@@ -164,7 +137,7 @@ function getBasicInfoPackage() {
             hasCatEyes: "false",
             eyeColor: ""
         },
-        hairStyle: {
+        hair: {
             hairColor: "",
             hairType: "",
             hairCut: "",
@@ -173,14 +146,14 @@ function getBasicInfoPackage() {
             tailColorMatches: "true"
         }
     }
-    //HairStyle VARS
+    //hair VARS
     minHairLength = 0;
     maxHairLength = 260;
     //hardcoded to be 0-260cm
     let hairLength = getIndexFloat(260, 0).toFixed(2);
-    BIP.hairStyle.hairLength = hairLength;
+    BIP.hair.hairLength = hairLength;
     let hairColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-    BIP.hairStyle.hairColor = hairColor;
+    BIP.hair.hairColor = hairColor;
 
     //RNG a name
     BIP.name = femaleNames[getIndexFloor(femaleNames.length, 1)];
@@ -236,20 +209,20 @@ function getBasicInfoPackage() {
 
     switch (hss) {
         case "s":
-            BIP.hairStyle.hairType = hairType[getIndexFloor(hairType.length, 1)];
-            BIP.hairStyle.hairCut = cut[0];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairCut = cut[0];
             break;
         case "av":
-            BIP.hairStyle.hairType = hairType[getIndexFloor(hairType.length, 1)];
-            BIP.hairStyle.hairCut = cut[1];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairCut = cut[1];
             break;
         case "l":
-            BIP.hairStyle.hairType = hairType[getIndexFloor(hairType.length, 1)];
-            BIP.hairStyle.hairCut = cut[2];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairCut = cut[2];
             break;
         default:
             console.log(hairLength);
-            console.log("End of HairStyle Switch: Something Messed up.");
+            console.log("End of hair Switch: Something Messed up.");
             break;
     }
 
@@ -262,8 +235,8 @@ function getCatInfoPackage(catClaws) {
     var CIP = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
-            pupilType: "",
-            pupilSize: "",
+            eyePupilType: "",
+            eyePupilSize: "",
             eyeColor: ""
         },
         ears: {
@@ -291,8 +264,8 @@ function getCatInfoPackage(catClaws) {
     }
 
     //Cat Eyes
-    let pupilType = ["circle", "oval", "slit"];
-    let pupilSize = ["wide", "thin", "small", "average", "big"];
+    let eyePupilType = ["circle", "oval", "slit"];
+    let eyePupilSize = ["wide", "thin", "small", "average", "big"];
 
     //size rng withing resonable range
     //colors will pull from hair color
@@ -313,8 +286,8 @@ function getCatInfoPackage(catClaws) {
 
     //Generate the Look of the CatGirl's cat eye if catEye is true.
     if (VCAT.basicInfo.eyes.hasCatEyes) {
-        CIP.eyes.pupilType = pupilType[getIndexFloor(pupilType.length, null)];
-        CIP.eyes.pupilSize = pupilSize[getIndexFloor(pupilSize.length, null)];
+        CIP.eyes.eyePupilType = eyePupilType[getIndexFloor(eyePupilType.length, null)];
+        CIP.eyes.eyePupilSize = eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
         CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
     }
 
@@ -502,16 +475,16 @@ function exportToCatCard() {
         $('.hasCatEyes', tmpCon).text(newCat.basicInfo.eyes.hasCatEyes);
         $('.eyeColor', tmpCon).text(newCat.basicInfo.eyes.eyeColor);
 
-        $('.hairColor', tmpCon).text(newCat.basicInfo.hairStyle.hairColor);
-        $('.hairType', tmpCon).text(newCat.basicInfo.hairStyle.hairType);
-        $('.hairCut', tmpCon).text(newCat.basicInfo.hairStyle.hairCut);
-        $('.hairLength', tmpCon).text(newCat.basicInfo.hairStyle.hairLength);
-        $('.earColorMatches', tmpCon).text(newCat.basicInfo.hairStyle.earColorMatches);
-        $('.tailColorMatches', tmpCon).text(newCat.basicInfo.hairStyle.tailColorMatches);
+        $('.hairColor', tmpCon).text(newCat.basicInfo.hair.hairColor);
+        $('.hairType', tmpCon).text(newCat.basicInfo.hair.hairType);
+        $('.hairCut', tmpCon).text(newCat.basicInfo.hair.hairCut);
+        $('.hairLength', tmpCon).text(newCat.basicInfo.hair.hairLength);
+        $('.earColorMatches', tmpCon).text(newCat.basicInfo.hair.earColorMatches);
+        $('.tailColorMatches', tmpCon).text(newCat.basicInfo.hair.tailColorMatches);
 
         //catINFO
-        $('.pupilType', tmpCon).text(newCat.catInfo.eyes.pupilType);
-        $('.pupilSize', tmpCon).text(newCat.catInfo.eyes.pupilSize);
+        $('.eyePupilType', tmpCon).text(newCat.catInfo.eyes.eyePupilType);
+        $('.eyePupilSize', tmpCon).text(newCat.catInfo.eyes.eyePupilSize);
         $('.eyeColor', tmpCon).text(newCat.catInfo.eyes.eyeColor);
 
         $('.earLength', tmpCon).text(newCat.catInfo.ears.earLength);
