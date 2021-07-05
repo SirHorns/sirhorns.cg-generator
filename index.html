@@ -5,123 +5,140 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Girl Generator</title>
+    <title>Catgirl Generator</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <meta property="og:title" content="Cat Girl Generator">
+    <meta property="og:description" content="A simple [HTML + JS] Catgirl Generator.">
+    <meta property="og:image" content="https://hypixelfarms.github.io/images/1.jpeg">
 </head>
 
 <body>
-    <div id="content">
-        <h2>Cat Girl Generator</h2>
-        <!-- Cat Card: -->
-        <br>
-        <div id="wrapper">
-            <div id="" class="catgirl">
-                <div class="basicinfo package">
-                    <h4>Basic Info</h4>
-                    <div>
-                        <b>General: </b> <br>
-                        Name: <span class="name"></span><br>
-                        Age: <span class="age"></span><br>
-                        Hieght: <span class="hieght"></span><br>
-                        Wight: <span class="wieght"></span><br>
-                        SkinTone: <span class="skinTone"></span><br>
-                        Cup Size: <span class="cupSize"></span>
-                    </div>
-                    <br class="sectionBreak">
-                    <div>
-                        <b>Eyes: </b><br>
-                        hasCatEyes: <span class="hasCatEyes"></span><br>
-                        eyeColor: <span class="eyeColor"></span>
-                    </div>
-                    <br class="sectionBreak">
-                    <div>
-                        <b>Hair: </b>
-                        <br>
-                        hairColor: <span class="hairColor"></span><br>
-                        hairType: <span class="hairType"></span><br>
-                        hairCut: <span class="hairCut"></span><br>
-                        hairLength: <span class="hairLength"></span><br>
-                        earColorMatches: <span class="earColorMatches"></span><br>
-                        tailColorMatches: <span class="tailColorMatches"></span>
+    <header class="header">
+        <h1>Cat Girl Generator</h1>
+    </header>
+
+    <div id="content-top">
+        <div id="content-sub">
+            <!-- Cat Card: -->
+            <br>
+            <div id="wrapper">
+                <div id="" class="catgirl">
+                    <div class="basicinfo package">
+                        <h4>Basic Info</h4>
+                        <div>
+                            <b>General: </b> <br>
+                            Name: <span class="name"></span><br>
+                            Age: <span class="age"></span><br>
+                            Hieght: <span class="hieght"></span><br>
+                            Wight: <span class="wieght"></span><br>
+                            SkinTone: <span class="skinTone"></span><br>
+                            Cup Size: <span class="cupSize"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Eyes: </b><br>
+                            hasCatEyes: <span class="hasCatEyes"></span><br>
+                            eyeColor: <span class="eyeColor"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Hair: </b>
+                            <br>
+                            hairColor: <span class="hairColor"></span><br>
+                            hairType: <span class="hairType"></span><br>
+                            hairCut: <span class="hairCut"></span><br>
+                            hairLength: <span class="hairLength"></span><br>
+                            earColorMatches: <span class="earColorMatches"></span><br>
+                            tailColorMatches: <span class="tailColorMatches"></span>
+                        </div>
+
                     </div>
 
-                </div>
-                <br class="sectionBreak">
-                <div class="catinfo package">
-                    <h4>Cat Info</h4>
-                    <div>
-                        <b>Eyes: </b><br>
-                        pupilType: <span class="pupilType"></span><br>
-                        pupilSize: <span class="pupilSize"></span><br>
-                        eyeColor: <span class="eyeColor"></span>
+                    <br class="sectionBreak">
+
+                    <div class="catinfo package">
+                        <h4>Cat Info</h4>
+                        <div>
+                            <b>Eyes: </b><br>
+                            pupilType: <span class="eyePupilType"></span><br>
+                            pupilSize: <span class="eyePupilSize"></span><br>
+                            eyeColor: <span class="eyeColor"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Ears: </b><br>
+                            earLength: <span class="earLength"></span><br>
+                            earSize: <span class="earSize"></span><br>
+                            earPattern: <span class="earPattern"></span><br>
+                            earColors: <span class="earColors"></span><br>
+                            furLength: <span class="furLength"></span><br>
+                            isFluffy: <span class="isFluffy"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Claws: </b><br>
+                            hasClaws: <span class="hasClaws"></span><br>
+                            length: <span class="length"></span><br>
+                            sharpness: <span class="sharpness"></span><br>
+                            color: <span class="color"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Tail: </b><br>
+                            tailLength: <span class="tailLength"></span><br>
+                            tailSize: <span class="tailSize"></span><br>
+                            tailPattern: <span class="tailPattern"></span><br>
+                            tailColors: <span class="tailColors"></span><br>
+                            tailHairLength: <span class="tailHairLength"></span><br>
+                            isFluffy: <span class="isFluffy"></span>
+                        </div>
                     </div>
                     <br class="sectionBreak">
-                    <div>
-                        <b>Ears: </b><br>
-                        earLength: <span class="earLength"></span><br>
-                        earSize: <span class="earSize"></span><br>
-                        earPattern: <span class="earPattern"></span>
-                        earColors: <span class="earColors"></span><br>
-                        furLength: <span class="furLength"></span><br>
-                        isFluffy: <span class="isFluffy"></span>
+
+                    <div class="miscinfo package">
+                        <h4>Misc Info: </h4><br>
+                        <div>
+                            <b>Fun Facts: </b><br>
+                            bloodType: <span class="bloodType"></span><br>
+                            starSign: <span class="starSign"></span>
+                        </div>
+                        <br class="sectionBreak">
+                        <div>
+                            <b>Traits: </b><br>
+                            Trait: <span class="traitPositive"></span><br>
+                            Trait: <span class="traitNeutral"></span><br>
+                            Trait: <span class="traitNegative"></span>
+                        </div>
                     </div>
+
                     <br class="sectionBreak">
-                    <div>
-                        <b>Claws: </b><br>
-                        hasClaws: <span class="hasClaws"></span><br>
-                        length: <span class="length"></span><br>
-                        sharpness: <span class="sharpness"></span><br>
-                        color: <span class="color"></span>
-                    </div>
-                    <br class="sectionBreak">
-                    <div>
-                        <b>Tail: </b><br>
-                        tailLength: <span class="tailLength"></span><br>
-                        tailSize: <span class="tailSize"></span><br>
-                        tailPattern: <span class="tailPattern"></span><br>
-                        tailColors: <span class="tailColors"></span><br>
-                        tailHairLength: <span class="tailHairLength"></span><br>
-                        isFluffy: <span class="isFluffy"></span>
-                    </div>
-                </div>
-                <br class="sectionBreak">
-                <div class="miscinfo package">
-                    <h4>Misc Info: </h4><br>
-                    <div>
-                        <b>Fun Facts: </b><br>
-                        bloodType: <span class="bloodType"></span><br>
-                        starSign: <span class="starSign"></span>
-                    </div>
-                    <br class="sectionBreak">
-                    <div>
-                        <b>Traits: </b><br>
-                        Trait: <span class="traitPositive"></span><br>
-                        Trait: <span class="traitNeutral"></span><br>
-                        Trait: <span class="traitNegative"></span>
-                    </div>
-                </div>
-                <br class="sectionBreak">
-                <div class="spicyinfo package">
-                    <h4>Spicy Info: </h4><br>
-                    <div>
-                        <b>XXXX: </b><br>
-                    </div>
+
+                    <!-- <div class="spicyinfo package">
+                        <h4>Spicy Info: </h4><br>
+                        <div>
+                            <b>WIP</b><br>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-        </div>
 
-        <!-- Buttons: -->
-        <div id="button-container">
-            <div class="button" onclick="exportToCatCard()">Generate Catgirl</div>
-            <div class="button" onclick="onDownload()">Download Catgirl JSON</div>
+            <!-- Buttons: -->
+            <div id="button-container">
+                <div class="button" onclick="exportToCatCard()">Generate Catgirl</div>
+                <div class="button" onclick="onDownload()">Download Catgirl JSON</div>
+            </div>
         </div>
-
-        <!-- SCRIPTS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
     </div>
 
+    <footer class="footer">
+        <span>SirHorns <a href="https://github.com/SirHorns"> Github</a></span>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
     <!-- Notes: -->
     <!-- 
