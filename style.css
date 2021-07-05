@@ -16,7 +16,7 @@
     background-color: antiquewhite;
     display: flex;
     flex-direction: row;
-    width: 800px;
+    width: 1000px;
     justify-content: center;
     padding: 25px;
 }
@@ -58,7 +58,12 @@
 }
 
 #button-container{
+    display: flex;
     margin: 20px;
+    flex-direction: row;
+    background-color: darkgray;
+    border-radius: 3px;
+    box-shadow: 5px;
 }
 .button{
     height: auto;
