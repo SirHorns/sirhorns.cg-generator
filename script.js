@@ -514,6 +514,8 @@ function exportToCatCard() {
         $('.traitNeutral', tmpCon).text(newCat.miscInfo.traits.traitNeutral);
         $('.traitNegative', tmpCon).text(newCat.miscInfo.traits.traitNegative);
 
+        //spicyINFO
+
         wrapper.append(tmpCon);
     }
 }
@@ -524,14 +526,14 @@ function getIndexFloor(max, min) {
     if (min == null) {
         min = 1;
     }
-    let index = Math.floor(Math.random() * (max - min) + min);
+    let index = Math.floor(Math.random() * max);
     return index;
 }
 function getIndexFloat(max, min) {
     if (min == null) {
         min = 1;
     }
-    let index = Math.random() * (max - min) + min;
+    let index = Math.random() * max;
     return index;
 }
 function coinFlip() {
