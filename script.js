@@ -156,7 +156,7 @@ function getBasicInfoPackage() {
     BIP.hair.hairColor = hairColor;
 
     //RNG a name
-    BIP.name = femaleNames[getIndexFloor(femaleNames.length, 1)];
+    BIP.name = femaleNames[getIndexFloor(femaleNames.length, 0)];
 
     //RNG age 
     //TODO: implement age range input with. Possible minimum age of 18.
@@ -181,11 +181,11 @@ function getBasicInfoPackage() {
 
     //RNG Cupsize
     //TODO: implement cupsize selector/inputer
-    BIP.cupSize = cupSizes[getIndexFloor(cupSizes.length, 1)];
+    BIP.cupSize = cupSizes[getIndexFloor(cupSizes.length, 0)];
 
     //RNG Skintone
     //TODDO: implement more skintones, skintone selector/inputter
-    BIP.skinTone = skinTones[getIndexFloor(skinTones.length, 1)];
+    BIP.skinTone = skinTones[getIndexFloor(skinTones.length, 0)];
 
     //RNG Eyes
     //TODO: implement eye selector/cat eye toggle
@@ -209,15 +209,15 @@ function getBasicInfoPackage() {
 
     switch (hss) {
         case "s":
-            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = cut[0];
             break;
         case "av":
-            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = cut[1];
             break;
         case "l":
-            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 1)];
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = cut[2];
             break;
         default:
@@ -307,17 +307,17 @@ function getCatInfoPackage(catClaws) {
     let earFluffy = "";
 
     //Generate the Look of the CatGirl's cat ears.
-    CIP.ears.earLength = earL[getIndexFloor(earL.length, 1)];
-    CIP.ears.earSize = earS[getIndexFloor(earS.length, 1)];
-    CIP.ears.earPattern = earPattern[getIndexFloor(earPattern.length, 1)];
+    CIP.ears.earLength = earL[getIndexFloor(earL.length, 0)];
+    CIP.ears.earSize = earS[getIndexFloor(earS.length, 0)];
+    CIP.ears.earPattern = earPattern[getIndexFloor(earPattern.length, 0)];
 
     //Generate the Look of the CatGirl's cat tail.
     let tailLength = ["short", "medium", "long"];
     let tailSize = ["small", "medium", "large"];
     let tailPattern = ["spotted", "solid", "patched"];
-    CIP.tail.tailLength = tailLength[getIndexFloor(earPattern.length, 1)];
-    CIP.tail.tailSize = tailSize[getIndexFloor(earPattern.length, 1)];
-    CIP.tail.tailPattern = tailPattern[getIndexFloor(earPattern.length, 1)];
+    CIP.tail.tailLength = tailLength[getIndexFloor(earPattern.length, 0)];
+    CIP.tail.tailSize = tailSize[getIndexFloor(earPattern.length, 0)];
+    CIP.tail.tailPattern = tailPattern[getIndexFloor(earPattern.length, 0)];
     CIP.tail.tailColors = [];
 
 
@@ -339,10 +339,10 @@ function getMiscInfoPackage() {
     }
 
     //RNG BloodType
-    MIP.bloodType = bloodType[getIndexFloor(bloodType.length, 1)];
+    MIP.bloodType = bloodType[getIndexFloor(bloodType.length, 0)];
 
     //RNG Starsign
-    let month = getIndexFloor(12, 1);
+    let month = getIndexFloor(12, 0);
     let day;
 
     switch (month) {
@@ -435,9 +435,9 @@ function getMiscInfoPackage() {
     }
 
     //RNG Personality Traits
-    MIP.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 1)];
-    MIP.traits.traitNeutral = negativePersonalityTraits[getIndexFloor(negativePersonalityTraits.length, 1)];
-    MIP.traits.traitNegative = neutralPersonalityTraits[getIndexFloor(neutralPersonalityTraits.length, 1)];
+    MIP.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 0)];
+    MIP.traits.traitNeutral = negativePersonalityTraits[getIndexFloor(negativePersonalityTraits.length, 0)];
+    MIP.traits.traitNegative = neutralPersonalityTraits[getIndexFloor(neutralPersonalityTraits.length, 0)];
 
     return MIP;
 }
@@ -531,9 +531,9 @@ function getIndexFloor(max, min) {
 }
 function getIndexFloat(max, min) {
     if (min == null) {
-        min = 1;
+        min = 0;
     }
-    let index = Math.random() * max;
+    let index = Math.random() * (max - min) + min;
     return index;
 }
 function coinFlip() {

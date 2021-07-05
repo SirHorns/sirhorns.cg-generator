@@ -53,7 +53,16 @@
 .miscinfo{
 
 }
+.spicyinfo{
+
+}
 
 #button-container{
     margin: 20px;
+}
+.button{
+    height: auto;
+    width: 150em;
+    margin: 1px;
+    padding: 1px;
 }
