@@ -1,87 +1,24 @@
-var femaleNames = ["Emily", "Hannah", "Madison", "Ashley", "Sarah", "Alexis", "Samantha", "Jessica", "Elizabeth", "Taylor",
-    "Lauren", "Alyssa", "Kayla", "Abigail", "Brianna", "Olivia", "Emma", "Megan", "Grace", "Victoria", "Rachel", "Anna", "Sydney",
-    "Destiny", "Morgan", "Jennifer", "Jasmine", "Haley", "Julia", "Kaitlyn", "Nicole", "Amanda", "Katherine", "Natalie", "Hailey",
-    "Alexandra", "Savannah", "Chloe", "Rebecca", "Stephanie", "Maria", "Sophia", "Mackenzie", "Allison", "Isabella", "Amber", "Mary",
-    "Danielle", "Gabrielle", "Jordan", "Brooke", "Michelle", "Sierra", "Katelyn", "Andrea", "Madeline", "Sara", "Kimberly", "Courtney",
-    "Erin", "Brittany", "Vanessa", "Jenna", "Jacqueline", "Caroline", "Faith", "Makayla", "Bailey", "Paige", "Shelby", "Melissa",
-    "Kaylee", "Christina", "Trinity", "Mariah", "Caitlin", "Autumn", "Marissa", "Breanna", "Angela", "Catherine", "Zoe", "Briana",
-    "Jada", "Laura", "Claire", "Alexa", "Kelsey", "Kathryn", "Leslie", "Alexandria", "Sabrina", "Mia", "Isabel", "Molly", "Leah",
-    "Katie", "Gabriella", "Cheyenne", "Cassandra", "Tiffany", "Erica", "Lindsey", "Kylie", "Amy", "Diana", "Cassidy", "Mikayla",
-    "Ariana", "Margaret", "Kelly", "Miranda", "Maya", "Melanie", "Audrey", "Jade", "Gabriela", "Caitlyn", "Angel", "Jillian",
-    "Alicia", "Jocelyn", "Erika", "Lily", "Heather", "Madelyn", "Adriana", "Arianna", "Lillian", "Kiara", "Riley", "Crystal",
-    "Mckenzie", "Meghan", "Skylar", "Ana", "Britney", "Angelica", "Kennedy", "Chelsea", "Daisy", "Kristen", "Veronica", "Isabelle",
-    "Summer", "Hope", "Brittney", "Lydia", "Hayley", "Evelyn", "Bethany", "Shannon", "Michaela", "Karen", "Jamie", "Daniela",
-    "Angelina", "Kaitlin", "Karina", "Sophie", "Sofia", "Diamond", "Payton", "Cynthia", "Alexia", "Valerie", "Monica", "Peyton",
-    "Carly", "Bianca", "Hanna", "Brenda", "Rebekah", "Alejandra", "Mya", "Avery", "Brooklyn", "Ashlyn", "Lindsay", "Ava",
-    "Desiree", "Alondra", "Camryn", "Ariel", "Naomi", "Jordyn", "Kendra", "Mckenna", "Holly", "Julie", "Kendall", "Kara", "Jasmin",
-    "Selena", "Esmeralda", "Amaya", "Kylee", "Maggie", "Makenzie", "Claudia", "Kyra", "Cameron", "Karla", "Kathleen", "Abby", "Delaney",
-    "Amelia", "Casey", "Serena", "Savanna", "Aaliyah", "Giselle", "Mallory", "April", "Raven", "Adrianna", "Christine", "Kristina",
-    "Nina", "Asia", "Natalia", "Valeria", "Aubrey", "Lauryn", "Kate", "Patricia", "Jazmin", "Rachael", "Katelynn", "Cierra", "Alison",
-    "Macy", "Nancy", "Elena", "Kyla", "Katrina", "Jazmine", "Joanna", "Tara", "Gianna", "Juliana", "Fatima", "Allyson", "Gracie", "Sadie"];
+//VARIABLES
+var femaleNames;
+var positivePersonalityTraits;
+var negativePersonalityTraits;
+var neutralPersonalityTraits; 
 
-var positivePersonalityTraits = ["Accessible", "Active", "Adaptable", "Admirable", "Adventurous", "Agreeable", "Alert",
-    "Allocentric", "Amiable", "Anticipative", "Appreciative", "Articulate", "Aspiring", "Athletic", "Attractive", "Balanced",
-    "Benevolent", "Brilliant", "Calm", "Capable", "Captivating", "Caring", "Challenging", "Charismatic", "Charming", "Cheerful",
-    "Clean", "Clear-headed", "Clever", "Colorful", "Companionly", "Compassionate", "Conciliatory", "Confident", "Conscientious",
-    "Considerate", "Constant", "Contemplative", "Cooperative", "Courageous", "Courteous", "Creative", "Cultured", "Curious", "Daring",
-    "Debonair", "Decent", "Decisive", "Dedicated", "Deep", "Dignified", "Directed", "Disciplined", "Discreet", "Dramatic", "Dutiful",
-    "Dynamic", "Earnest", "Ebullient", "Educated", "Efficient", "Elegant", "Eloquent", "Empathetic", "Energetic", "Enthusiastic",
-    "Esthetic", "Exciting", "Extraordinary", "Fair", "Faithful", "Farsighted", "Felicific", "Firm", "Flexible", "Focused", "Forecful",
-    "Forgiving", "Forthright", "Freethinking", "Friendly", "Fun-loving", "Gallant", "Generous", "Gentle", "Genuine", "Good-natured",
-    "Gracious", "Hardworking", "Healthy", "Hearty", "Helpful", "Herioc", "High-minded", "Honest", "Honorable", "Humble", "Humorous",
-    "Idealistic", "Imaginative", "Impressive", "Incisive", "Incorruptible", "Independent", "Individualistic", "Innovative", "Inoffensive",
-    "Insightful", "Insouciant", "Intelligent", "Intuitive", "Invulnerable", "Kind", "Knowledge", "Leaderly", "Leisurely", "Liberal",
-    "Logical", "Lovable", "Loyal", "Lyrical", "Magnanimous", "Many-sided", "Masculine", "Mature", "Methodical", "Maticulous", "Moderate",
-    "Modest", "Multi-leveled", "Neat", "Nonauthoritarian", "Objective", "Observant", "Open", "Optimistic", "Orderly", "Organized", "Original",
-    "Painstaking", "Passionate", "Patient", "Patriotic", "Peaceful", "Perceptive", "Perfectionist", "Personable", "Persuasive", "Planful",
-    "Playful", "Polished", "Popular", "Practical", "Precise", "Principled", "Profound", "Protean", "Protective", "Providential", "Prudent",
-    "Punctual", "Pruposeful", "Rational", "Realistic", "Reflective", "Relaxed", "Reliable", "Resourceful", "Respectful", "Responsible",
-    "Responsive", "Reverential", "Romantic", "Rustic", "Sage", "Sane", "Scholarly", "Scrupulous", "Secure", "Selfless", "Self-critical",
-    "Self-defacing", "Self-denying", "Self-reliant", "Self-sufficent", "Sensitive", "Sentimental", "Seraphic", "Serious", "Sexy", "Sharing",
-    "Shrewd", "Simple", "Skillful", "Sober", "Sociable", "Solid", "Sophisticated", "Spontaneous", "Sporting", "Stable", "Steadfast",
-    "Steady", "Stoic", "Strong", "Studious", "Suave", "Subtle", "Sweet", "Sympathetic", "Systematic", "Tasteful", "Teacherly", "Thorough",
-    "Tidy", "Tolerant", "Tractable", "Trusting", "Uncomplaining", "Understanding", "Undogmatic", "Unfoolable", "Upright", "Urbane",
-    "Venturesome", "Vivacious", "Warm", "Well-bred", "Well-read", "Well-rounded", "Winning", "Wise", "Witty", "Youthful"];
+$.getJSON('https://sirhorns.github.io/Data/femaleNames.json', function (json) {
+    femaleNames = json.femaleNames;
+});
 
-var negativePersonalityTraits = ["Abrasive", "Abrupt", "Agonizing", "Aimless", "Airy", "Aloof", "Amoral", "Angry", "Anxious",
-    "Apathetic", "Arbitrary", "Argumentative", "Arrogantt", "Artificial", "Asocial", "Assertive", "Astigmatic", "Barbaric", "Bewildered",
-    "Bizarre", "Bland", "Blunt", "Biosterous", "Brittle", "Brutal", "Calculating", "Callous", "Cantakerous", "Careless", "Cautious", "Charmless",
-    "Childish", "Clumsy", "Coarse", "Cold", "Colorless", "Complacent", "Complaintive", "Compulsive", "Conceited", "Condemnatory", "Conformist",
-    "Confused", "Contemptible", "Conventional", "Cowardly", "Crafty", "Crass", "Crazy", "Criminal", "Critical", "Crude", "Cruel", "Cynical", "Decadent",
-    "Deceitful", "Delicate", "Demanding", "Dependent", "Desperate", "Destructive", "Devious", "Difficult", "Dirty", "Disconcerting", "Discontented",
-    "Discouraging", "Discourteous", "Dishonest", "Disloyal", "Disobedient", "Disorderly", "Disorganized", "Disputatious", "Disrespectful",
-    "Disruptive", "Dissolute", "Dissonant", "Distractible", "Disturbing", "Dogmatic", "Domineering", "Dull", "Easily Discouraged", "Egocentric",
-    "Enervated", "Envious", "Erratic", "Escapist", "Excitable", "Expedient", "Extravagant", "Extreme", "Faithless", "False", "Fanatical", "Fanciful",
-    "Fatalistic", "Fawning", "Fearful", "Fickle", "Fiery", "Fixed", "Flamboyant", "Foolish", "Forgetful", "Fraudulent", "Frightening", "Frivolous",
-    "Gloomy", "Graceless", "Grand", "Greedy", "Grim", "Gullible", "Hateful", "Haughty", "Hedonistic", "Hesitant", "Hidebound", "High-handed", "Hostile",
-    "Ignorant", "Imitative", "Impatient", "Impractical", "Imprudent", "Impulsive", "Inconsiderate", "Incurious", "Indecisive", "Indulgent", "Inert",
-    "Inhibited", "Insecure", "Insensitive", "Insincere", "Insulting", "Intolerant", "Irascible", "Irrational", "Irresponsible", "Irritable", "Lazy",
-    "Libidinous", "Loquacious", "Malicious", "Mannered", "Mannerless", "Mawkish", "Mealymouthed", "Mechanical", "Meddlesome", "Melancholic",
-    "Meretricious", "Messy", "Miserable", "Miserly", "Misguided", "Mistaken", "Money-minded", "Monstrous", "Moody", "Morbid", "Muddle-headed",
-    "Naive", "Narcissistic", "Narrow", "Narrow-minded", "Natty", "Negativistic", "Neglectful", "Neurotic", "Nihilistic", "Obnoxious", "Obsessive",
-    "Obvious", "Odd", "Offhand", "One-dimensional", "One-sided", "Opinionated", "Opportunistic", "Oppressed", "Outrageous", "Overimaginative",
-    "Paranoid", "Passive", "Pedantic", "Perverse", "Petty", "Pharissical", "Phlegmatic", "Plodding", "Pompous", "Possessive", "Power-hungry",
-    "Predatory", "Prejudiced", "Presumptuous", "Pretentious", "Prim", "Procrastinating", "Profligate", "Provocative", "Pugnacious", "Puritanical",
-    "Quirky", "Reactionary", "Reactive", "Regimental", "Regretful", "Repentant", "Repressed", "Resentful", "Ridiculous", "Rigid", "Ritualistic",
-    "Rowdy", "Ruined", "Sadistic", "Sanctimonious", "Scheming", "Scornful", "Secretive", "Sedentary", "Selfish", "Self-indulgent", "Shallow",
-    "Shortsighted", "Shy", "Silly", "Single-minded", "Sloppy", "Slow", "Sly", "Small-thinking", "Softheaded", "Sordid", "Steely", "Stiff",
-    "Strong-willed", "Stupid", "Submissive", "Superficial", "Superstitious", "Suspicious", "Tactless", "Tasteless", "Tense", "Thievish",
-    "Thoughtless", "Timid", "Transparent", "Treacherous", "Trendy", "Troublesome", "Unappreciative", "Uncaring", "Uncharitable", "Unconvincing",
-    "Uncooperative", "Uncreative", "Uncritical", "Unctuous", "Undisciplined", "Unfriendly", "Ungrateful", "Unhealthy", "Unimaginative",
-    "Unimpressive", "Unlovable", "Unpolished", "Unprincipled", "Unrealistic", "Unreflective", "Unreliable", "Unrestrained", "Unself-critical",
-    "Unstable", "Vacuous", "Vague", "Venal", "Venomous", "Vindictive", "Vulnerable", "Weak", "Weak-willed", "Well-meaning", "Willful", "Wishful", "Zany"];
+$.getJSON("https://sirhorns.github.io/Data/positivePersonalityTraits.json", function (json) {
+    positivePersonalityTraits= json.positivePersonalityTraits;
+});
 
-var neutralPersonalityTraits = ["Absentminded", "Aggressive", "Ambitious", "Amusing", "Artful", "Ascetic", "Authoritarian", "Big-thinking",
-    "Boyish", "Breezy", "Businesslike", "Busy", "Casual", "Crebral", "Chummy", "Circumspect", "Competitive", "Complex", "Confidential", "Conservative",
-    "Contradictory", "Crisp", "Cute", "Deceptive", "Determined", "Dominating", "Dreamy", "Driving", "Droll", "Dry", "Earthy", "Effeminate", "Emotional",
-    "Enigmatic", "Experimental", "Familial", "Folksy", "Formal", "Freewheeling", "Frugal", "Glamorous", "Guileless", "High-spirited", "Huried", "Hypnotic",
-    "Iconoclastic", "Idiosyncratic", "Impassive", "Impersonal", "Impressionable", "Intense", "Invisible", "Irreligious", "Irreverent", "Maternal", "Mellow",
-    "Modern", "Moralistic", "Mystical", "Neutral", "Noncommittal", "Noncompetitive", "Obedient", "Old-fashined", "Ordinary", "Outspoken", "Paternalistic",
-    "Physical", "Placid", "Political", "Predictable", "Preoccupied", "Private", "Progressive", "Proud", "Pure", "Questioning", "Quiet", "Religious", "Reserved",
-    "Restrained", "Retiring", "Sarcastic", "Self-conscious", "Sensual", "Skeptical", "Smooth", "Soft", "Solemn", "Solitary", "Stern", "Stoiid", "Strict", "Stubborn",
-    "Stylish", "Subjective", "Surprising", "Soft", "Tough", "Unaggressive", "Unambitious", "Unceremonious", "Unchanging", "Undemanding", "Unfathomable", "Unhurried",
-    "Uninhibited", "Unpatriotic", "Unpredicatable", "Unreligious", "Unsentimental", "Whimsical"
-];
+$.getJSON("https://sirhorns.github.io/Data/negativePersonalityTraits.json", function (json) {
+    negativePersonalityTraits= json.negativePersonalityTraits;
+});
+
+$.getJSON("https://sirhorns.github.io/Data/neutralPersonalityTraits.json", function (json) {
+    neutralPersonalityTraits= json.neutralPersonalityTraits;
+});
 
 let hairType = ["straight", "wavy", "curly", "coily"];
 //let cut = ["buzz cut", "ear/pixie", "chin/bob", "shoulder/lob", "mid-back", "tailbone", "knee", "foot/floor", 'rapunzel'];
@@ -405,9 +342,9 @@ function getCatInfoPackage(catClaws) {
     let tailLength = ["short", "medium", "long"];
     let tailSize = ["small", "medium", "large"];
     let tailPattern = ["spotted", "solid", "patched"];
-    CIP.tail.tailLength = tailLength[getIndexFloor(tailLength.length, 1)];
-    CIP.tail.tailSize = tailSize[getIndexFloor(tailSize.length, 1)];
-    CIP.tail.tailPattern = tailPattern[getIndexFloor(tailPattern.length, 1)];
+    CIP.tail.tailLength = tailLength[getIndexFloor(earPattern.length, 1)];
+    CIP.tail.tailSize = tailSize[getIndexFloor(earPattern.length, 1)];
+    CIP.tail.tailPattern = tailPattern[getIndexFloor(earPattern.length, 1)];
     CIP.tail.tailColors = [];
 
 
@@ -614,14 +551,14 @@ function getIndexFloor(max, min) {
     if (min == null) {
         min = 1;
     }
-    let index = Math.floor(Math.random() * max);
+    let index = Math.floor(Math.random() * (max - min) + min);
     return index;
 }
 function getIndexFloat(max, min) {
     if (min == null) {
         min = 1;
     }
-    let index = Math.random() * max;
+    let index = Math.random() * (max - min) + min;
     return index;
 }
 function coinFlip() {
