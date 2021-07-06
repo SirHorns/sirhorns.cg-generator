@@ -288,8 +288,8 @@ function getCatInfoPackage(catClaws) {
     if (VCAT.basicInfo.eyes.hasCatEyes) {
         CIP.eyes.eyePupilType = eyePupilType[getIndexFloor(eyePupilType.length, null)];
         CIP.eyes.eyePupilSize = eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
-        CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
     }
+    CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
 
     //Generate the Look of the CatGirl's cat claws if catClaws is true.
     if (catClaws) {
