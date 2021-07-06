@@ -524,9 +524,9 @@ function exportToCatCard() {
 //RNG functions
 function getIndexFloor(max, min) {
     if (min == null) {
-        min = 1;
+        min = 0;
     }
-    let index = Math.floor(Math.random() * max);
+    let index = Math.floor(Math.random() * (max - min ) + min);
     return index;
 }
 function getIndexFloat(max, min) {
