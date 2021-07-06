@@ -23,11 +23,11 @@
     flex-direction: column;
 }
 
-#content-top  h2{
+.content-top  h2{
     margin: 20px;
 }
 
-#content-sub{
+.content-sub{
     justify-content: center;
     align-items: center;
     max-height: 100%;
@@ -54,7 +54,6 @@
     align-items: center;
     background-color: rgb(228, 214, 196);
     margin: 10px;
-    padding: 5px;
 }
 
 .package  div{
@@ -83,6 +82,26 @@
 }
 .spicyinfo{
 
+}
+
+#cat-text{
+    height: auto;
+    width: 400px;
+    margin: 10px 0px 10px 10px;
+    background-color: rgb(228, 214, 196);
+}
+
+#cat-text .block{
+    padding: 15px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+#cat-text h4{
+    text-align: center;
+    background-color: aliceblue; 
 }
 
 #button-container{
@@ -119,8 +138,8 @@
     justify-content: center;
     align-items: center; 
 
-    position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }

@@ -22,7 +22,7 @@ $.getJSON("https://sirhorns.github.io/Data/neutralPersonalityTraits.json", funct
 
 let hairType = ["straight", "wavy", "curly", "coily"];
 //let cut = ["buzz cut", "ear/pixie", "chin/bob", "shoulder/lob", "mid-back", "tailbone", "knee", "foot/floor", 'rapunzel'];
-let cut = ["Short", "Medium", "Long"]
+let cut = ["short", "medium", "long"]
 
 let skinTones = ["Ivory", "Beige", "Alabaster", "Honey", "Carotenoid", "Tan", "Caramel", "Bronze", "Mahogany", "Chestnut", "Buff", "Peaches and Cream", "Umber", "Praline", "Espresso Brown", "Porcelain", "Hickory", "Mustard", "Sable", "Almond", "Bisque", "Teak", "Cacao", "Pecan", "Saddle ", "Brown"]
 
@@ -455,6 +455,10 @@ var newCat;
 function exportToCatCard() {
     newCat = makeCat();
     displayInfo();
+
+    var htmlElem = document.getElementById("cat-description");
+    htmlElem.style.display="block";
+    var tmp = $('#cat-description');
 
 
     function displayInfo() {
