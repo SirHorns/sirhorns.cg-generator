@@ -104,17 +104,13 @@ var VCAT;
 function makeCat() {
 
     VCAT = new CatGirl;
-    let hasClaws;
-    //let hasCatEyes;
-
 
     //TODO: implement selectors for claws and cat eyes. Default random selection on both.
     //hasCatEyes = coinFlip();
-    hasClaws = coinFlip();
-
+    
     VCAT.basicInfo = getBasicInfoPackage();
     //VCAT.catInfo = getCatInfoPackage(hasCatEyes, hasClaws);
-    VCAT.catInfo = getCatInfoPackage(hasClaws);
+    VCAT.catInfo = getCatInfoPackage();
     VCAT.miscInfo = getMiscInfoPackage();
 
     //console.log(JSON.stringify(VCAT, null, 4));
@@ -288,14 +284,19 @@ function getCatInfoPackage(catClaws) {
     if (VCAT.basicInfo.eyes.hasCatEyes) {
         CIP.eyes.eyePupilType = eyePupilType[getIndexFloor(eyePupilType.length, null)];
         CIP.eyes.eyePupilSize = eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
-        CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
     }
+    CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
 
+    let hasClaws;
+    hasClaws = coinFlip();
     //Generate the Look of the CatGirl's cat claws if catClaws is true.
-    if (catClaws) {
+    if (hasClaws) {
+        CIP.claws.hasClaws = true;
         CIP.claws.length = clasLength[getIndexFloor(clasLength.length, null)];
         CIP.claws.sharpness = clawSharpness[getIndexFloor(clawSharpness.length, null)];
         CIP.claws.color = clawColor[getIndexFloor(clawColor.length, null)];
+    }else{
+        CIP.claws.hasClaws = false;
     }
 
     //Cat Ears
@@ -471,8 +472,8 @@ function exportToCatCard() {
         //basicINFO
         $('.name', tmpCon).text(newCat.basicInfo.name);
         $('.age', tmpCon).text(newCat.basicInfo.age);
-        $('.hieght', tmpCon).text(newCat.basicInfo.hieght);
-        $('.wieght', tmpCon).text(newCat.basicInfo.wieght);
+        $('.hieght', tmpCon).text(newCat.basicInfo.hieght + " cm");
+        $('.wieght', tmpCon).text(newCat.basicInfo.wieght + " kg");
         $('.skinTone', tmpCon).text(newCat.basicInfo.skinTone);
         $('.cupSize', tmpCon).text(newCat.basicInfo.cupSize);
 
