@@ -104,17 +104,13 @@ var VCAT;
 function makeCat() {
 
     VCAT = new CatGirl;
-    let hasClaws;
-    //let hasCatEyes;
-
 
     //TODO: implement selectors for claws and cat eyes. Default random selection on both.
     //hasCatEyes = coinFlip();
-    hasClaws = coinFlip();
-
+    
     VCAT.basicInfo = getBasicInfoPackage();
     //VCAT.catInfo = getCatInfoPackage(hasCatEyes, hasClaws);
-    VCAT.catInfo = getCatInfoPackage(hasClaws);
+    VCAT.catInfo = getCatInfoPackage();
     VCAT.miscInfo = getMiscInfoPackage();
 
     //console.log(JSON.stringify(VCAT, null, 4));
@@ -291,11 +287,16 @@ function getCatInfoPackage(catClaws) {
     }
     CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
 
+    let hasClaws;
+    hasClaws = coinFlip();
     //Generate the Look of the CatGirl's cat claws if catClaws is true.
-    if (catClaws) {
+    if (hasClaws) {
+        CIP.claws.hasClaws = true;
         CIP.claws.length = clasLength[getIndexFloor(clasLength.length, null)];
         CIP.claws.sharpness = clawSharpness[getIndexFloor(clawSharpness.length, null)];
         CIP.claws.color = clawColor[getIndexFloor(clawColor.length, null)];
+    }else{
+        CIP.claws.hasClaws = false;
     }
 
     //Cat Ears
