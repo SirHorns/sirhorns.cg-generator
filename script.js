@@ -471,8 +471,8 @@ function exportToCatCard() {
         //basicINFO
         $('.name', tmpCon).text(newCat.basicInfo.name);
         $('.age', tmpCon).text(newCat.basicInfo.age);
-        $('.hieght', tmpCon).text(newCat.basicInfo.hieght);
-        $('.wieght', tmpCon).text(newCat.basicInfo.wieght);
+        $('.hieght', tmpCon).text(newCat.basicInfo.hieght + " cm");
+        $('.wieght', tmpCon).text(newCat.basicInfo.wieght + " kg");
         $('.skinTone', tmpCon).text(newCat.basicInfo.skinTone);
         $('.cupSize', tmpCon).text(newCat.basicInfo.cupSize);
 
