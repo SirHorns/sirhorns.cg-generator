@@ -300,16 +300,17 @@ function getCatInfoPackage(catClaws) {
     }
 
     //Cat Ears
-    let earL = ["short", "average", "tall"];
-    let earS = ["small", "medium", "large"];
+    let earLength = ["short", "average", "tall"];
+    let earSize = ["small", "medium", "large"];
     let earPattern = ["spotted", "solid", "patched"];
+
     let earColors = "";
     let furLength = "";
     let earFluffy = "";
 
     //Generate the Look of the CatGirl's cat ears.
-    CIP.ears.earLength = earL[getIndexFloor(earL.length, 0)];
-    CIP.ears.earSize = earS[getIndexFloor(earS.length, 0)];
+    CIP.ears.earLength = earLength[getIndexFloor(earLength.length, 0)];
+    CIP.ears.earSize = earSize[getIndexFloor(earSize.length, 0)];
     CIP.ears.earPattern = earPattern[getIndexFloor(earPattern.length, 0)];
 
     //Generate the Look of the CatGirl's cat tail.
