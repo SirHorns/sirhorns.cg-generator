@@ -2,22 +2,22 @@
 var femaleNames;
 var positivePersonalityTraits;
 var negativePersonalityTraits;
-var neutralPersonalityTraits; 
+var neutralPersonalityTraits;
 
 $.getJSON('https://sirhorns.github.io/Data/femaleNames.json', function (json) {
     femaleNames = json.femaleNames;
 });
 
 $.getJSON("https://sirhorns.github.io/Data/positivePersonalityTraits.json", function (json) {
-    positivePersonalityTraits= json.positivePersonalityTraits;
+    positivePersonalityTraits = json.positivePersonalityTraits;
 });
 
 $.getJSON("https://sirhorns.github.io/Data/negativePersonalityTraits.json", function (json) {
-    negativePersonalityTraits= json.negativePersonalityTraits;
+    negativePersonalityTraits = json.negativePersonalityTraits;
 });
 
 $.getJSON("https://sirhorns.github.io/Data/neutralPersonalityTraits.json", function (json) {
-    neutralPersonalityTraits= json.neutralPersonalityTraits;
+    neutralPersonalityTraits = json.neutralPersonalityTraits;
 });
 
 let hairType = ["straight", "wavy", "curly", "coily"];
@@ -39,6 +39,7 @@ function CatGirl() {
         wieght: "",
         skinTone: "",
         cupSize: "",
+        bodyType:"",
         eyes: {
             hasCatEyes: "false",
             eyeColor: "",
@@ -107,7 +108,7 @@ function makeCat() {
 
     //TODO: implement selectors for claws and cat eyes. Default random selection on both.
     //hasCatEyes = coinFlip();
-    
+
     VCAT.basicInfo = getBasicInfoPackage();
     //VCAT.catInfo = getCatInfoPackage(hasCatEyes, hasClaws);
     VCAT.catInfo = getCatInfoPackage();
@@ -129,6 +130,8 @@ function getBasicInfoPackage() {
         wieght: "",
         skinTone: "",
         cupSize: "",
+        bodyType:"",
+        bodyShape: "",
         eyes: {
             hasCatEyes: "false",
             eyeColor: ""
@@ -142,14 +145,7 @@ function getBasicInfoPackage() {
             tailColorMatches: "true"
         }
     }
-    //hair VARS
-    minHairLength = 0;
-    maxHairLength = 260;
-    //hardcoded to be 0-260cm
-    let hairLength = getIndexFloat(260, 0).toFixed(2);
-    BIP.hair.hairLength = hairLength;
-    let hairColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-    BIP.hair.hairColor = hairColor;
+    
 
     //RNG a name
     BIP.name = femaleNames[getIndexFloor(femaleNames.length, 0)];
@@ -192,36 +188,114 @@ function getBasicInfoPackage() {
     //RNG Hair
     //Do not get attached, way more steps invovled with configuring hair
     //TODO: implement Hair Editor System.
-    let hss;
-    if (hairLength < 20) {
-        hss = "s";
-    }
-    else if (20 < hairLength < 80) {
-        hss = "av";
-    }
-    else if (hairLength > 80) {
-        hss = "l";
-    };
+    //hair VARS
+    minHairLength = 0;
+    maxHairLength = 260;
+    /* 
+    short           -7in -17.78cm
+    Ear             8-9in 20.32-22.86cm
+    Chin            10-11in 25.4-27.94cm
+    Neck            12-13in 30.48-33.02cm
+    Shoulder        14-15in 35.56-38.1cm
+    Armpit          16-17in 40.64-43.18cm
 
-    switch (hss) {
-        case "s":
+    Armpit          16-19in 40.64-48.26cm
+    Bra-strap       18-19in 45.72-48.26cm
+
+    Mid-back        20-21in 50.8-53.34cm
+    Waist           22-25in 55.88-63.5cm
+    Hip             26-28in 66.04-71.12cm
+    Tailbone        33-35in 83.82-88.9cm
+    Classic         36-39in 91.44-99.06cm
+    Mid-Thigh       40-46in 101.6-116.84cm
+    Knee            47-53in 119.38-134.62cm
+    Calf            54-64in 137.16-162.56cm
+    Ankle           65-69in 165.1-175.26cm
+    Floor           +70in +177.8cm
+    */
+
+    //hardcoded to be 0-260cm
+    let hairLength = getIndexFloat(300, 0).toFixed(2);
+    BIP.hair.hairLength = hairLength;
+    let hairColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    BIP.hair.hairColor = hairColor;
+    let haitCut = ["short","ear","chin","neck","shoulder","armpit","mid-back","waist","hip","tailbone","classic","mid-thigh","knee","calf","ankle","floor"];
+
+    switch (true) {
+        case (hairLength < 17.78):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
-            BIP.hair.hairCut = cut[0];
+            BIP.hair.hairCut = haitCut[0];
             break;
-        case "av":
+        case (hairLength < 23.86):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
-            BIP.hair.hairCut = cut[1];
+            BIP.hair.hairCut = haitCut[1];
             break;
-        case "l":
+        case (hairLength < 30.48):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
-            BIP.hair.hairCut = cut[2];
+            BIP.hair.hairCut = haitCut[2];
             break;
-        default:
-            console.log(hairLength);
-            console.log("End of hair Switch: Something Messed up.");
+        case (hairLength < 35.56):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[3];
+            break;
+        case (hairLength < 40.64 ):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[4];
+            break;
+        case (hairLength < 50.8):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[5];
+            break;
+        case (hairLength < 55.88):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[6];
+            break;
+        case (hairLength < 66.04):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[7];
+            break;
+        case (hairLength < 83.82):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[8];
+            break;
+        case (hairLength < 91.44):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[9];
+            break;
+        case ( hairLength < 101.6):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[10];
+            break;
+        case (hairLength < 119.38):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[11];
+            break;
+        case (hairLength < 137.16):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[12];
+            break;
+        case (hairLength < 165.1):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[13];
+            break;
+        case (hairLength < 177.8 ):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[14];
+            break;
+        case ( 177.8 < hairLength):
+            BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
+            BIP.hair.hairCut = haitCut[15];
+            break;
+        default:   
             break;
     }
 
+    //Body RNG.
+    let bodyShapes = ["triangle","inverted-triangle","pear","spoon","hourglass","top-hourglass","bottom-hourglass","round","oval","diamond"];
+    BIP.bodyShape = bodyShapes[getIndexFloor(bodyShapes.length, 0)];
+
+    let bodyTypes = ["petite","thin","average","slim","skinny","curvaceous","soft","chubby","fit"];
+    BIP.bodyType = bodyTypes[getIndexFloor(bodyTypes.length, 0)];
 
     return BIP;
 }
@@ -295,7 +369,7 @@ function getCatInfoPackage(catClaws) {
         CIP.claws.length = clasLength[getIndexFloor(clasLength.length, null)];
         CIP.claws.sharpness = clawSharpness[getIndexFloor(clawSharpness.length, null)];
         CIP.claws.color = clawColor[getIndexFloor(clawColor.length, null)];
-    }else{
+    } else {
         CIP.claws.hasClaws = false;
     }
 
@@ -433,6 +507,7 @@ function getMiscInfoPackage() {
                 MIP.starSign = "Sagittarius";
             }
         default:
+            
             break;
     }
 
@@ -459,7 +534,7 @@ function exportToCatCard() {
     displayInfo();
 
     var htmlElem = document.getElementById("cat-description");
-    htmlElem.style.display="block";
+    htmlElem.style.display = "block";
     var tmp = $('#cat-description');
 
 
@@ -477,6 +552,8 @@ function exportToCatCard() {
         $('.wieght', tmpCon).text(newCat.basicInfo.wieght + " kg");
         $('.skinTone', tmpCon).text(newCat.basicInfo.skinTone);
         $('.cupSize', tmpCon).text(newCat.basicInfo.cupSize);
+        $('.bodyShape', tmpCon).text(newCat.basicInfo.bodyShape);
+        $('.bodyType', tmpCon).text(newCat.basicInfo.bodyType);
 
         $('.hasCatEyes', tmpCon).text(newCat.basicInfo.eyes.hasCatEyes);
         $('.eyeColor', tmpCon).text(newCat.basicInfo.eyes.eyeColor);
@@ -532,7 +609,7 @@ function getIndexFloor(max, min) {
     if (min == null) {
         min = 0;
     }
-    let index = Math.floor(Math.random() * (max - min ) + min);
+    let index = Math.floor(Math.random() * (max - min) + min);
     return index;
 }
 function getIndexFloat(max, min) {
