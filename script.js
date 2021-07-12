@@ -19,17 +19,42 @@ $.getJSON("https://sirhorns.github.io/Data/negativePersonalityTraits.json", func
 $.getJSON("https://sirhorns.github.io/Data/neutralPersonalityTraits.json", function (json) {
     neutralPersonalityTraits = json.neutralPersonalityTraits;
 });
+const catGirlVars = {
+    hair: {
+        hairType: ["straight", "wavy", "curly", "coily"],
+        haitCut: ["short", "ear", "chin", "neck", "shoulder",
+            "armpit", "mid-back", "waist", "hip", "tailbone",
+            "classic", "mid-thigh", "knee", "calf", "ankle", "floor"]
+    },
+    eyes: {
 
-let hairType = ["straight", "wavy", "curly", "coily"];
-//let cut = ["buzz cut", "ear/pixie", "chin/bob", "shoulder/lob", "mid-back", "tailbone", "knee", "foot/floor", 'rapunzel'];
-let cut = ["short", "medium", "long"]
+    },
+    body: {
+        bodyShapes: ["triangle", "inverted-triangle", "pear", "spoon", "hourglass",
+            "top-hourglass", "bottom-hourglass", "round", "oval", "diamond"],
+        bodyTypes: ["petite", "thin", "average", "slim",
+            "skinny", "curvaceous", "soft", "chubby", "fit"]
+    },
+    skinTones: ["ivory", "beige", "alabaster", "honey",
+        "carotenoid", "tan", "caramel", "bronze", "mahogany",
+        "chestnut", "buff", "peaches and cream", "umber", "praline",
+        "espresso Brown", "porcelain", "hickory", "mustard", "sable",
+        "almond", "bisque", "teak", "cacao", "pecan", "saddle ", "brown"],
+    cupSizes:["AA", "A", "B", "C", "D", "E", "F", "G", "H"],
+    bloodType:["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"],
+}
 
-let skinTones = ["Ivory", "Beige", "Alabaster", "Honey", "Carotenoid", "Tan", "Caramel", "Bronze", "Mahogany", "Chestnut", "Buff", "Peaches and Cream", "Umber", "Praline", "Espresso Brown", "Porcelain", "Hickory", "Mustard", "Sable", "Almond", "Bisque", "Teak", "Cacao", "Pecan", "Saddle ", "Brown"]
-
-let cupSizes = ["AA", "A", "B", "C", "D", "E", "F", "G", "H"];
-
+const hairType = ["straight", "wavy", "curly", "coily"];
+const cut = ["short", "medium", "long"]
+const skinTones = ["ivory", "beige", "alabaster", "honey",
+    "carotenoid", "tan", "caramel", "bronze", "mahogany",
+    "chestnut", "buff", "peaches and cream", "umber", "praline",
+    "espresso Brown", "porcelain", "hickory", "mustard", "sable",
+    "almond", "bisque", "teak", "cacao", "pecan", "saddle ", "brown"]
+const cupSizes = ["AA", "A", "B", "C", "D", "E", "F", "G", "H"];
 const bloodType = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
 
+//catgirl object
 function CatGirl() {
     this.basicInfo = {
         info: "This Package includes basic descriptive Info",
@@ -39,7 +64,7 @@ function CatGirl() {
         wieght: "",
         skinTone: "",
         cupSize: "",
-        bodyType:"",
+        bodyType: "",
         eyes: {
             hasCatEyes: "false",
             eyeColor: "",
@@ -99,22 +124,22 @@ function CatGirl() {
         info: "This Package includes Spicey Info"
     }
 }
-
+//global catgirl var
 var VCAT;
 
+//Function Creates catgirl and returns the configured object.
 function makeCat() {
-
     VCAT = new CatGirl;
 
     //TODO: implement selectors for claws and cat eyes. Default random selection on both.
     //hasCatEyes = coinFlip();
 
+    //call each function that configures a Catgirl Package
     VCAT.basicInfo = getBasicInfoPackage();
-    //VCAT.catInfo = getCatInfoPackage(hasCatEyes, hasClaws);
     VCAT.catInfo = getCatInfoPackage();
     VCAT.miscInfo = getMiscInfoPackage();
 
-    //console.log(JSON.stringify(VCAT, null, 4));
+
     return VCAT;
 }
 
@@ -130,7 +155,7 @@ function getBasicInfoPackage() {
         wieght: "",
         skinTone: "",
         cupSize: "",
-        bodyType:"",
+        bodyType: "",
         bodyShape: "",
         eyes: {
             hasCatEyes: "false",
@@ -145,7 +170,7 @@ function getBasicInfoPackage() {
             tailColorMatches: "true"
         }
     }
-    
+
 
     //RNG a name
     BIP.name = femaleNames[getIndexFloor(femaleNames.length, 0)];
@@ -219,7 +244,7 @@ function getBasicInfoPackage() {
     BIP.hair.hairLength = hairLength;
     let hairColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
     BIP.hair.hairColor = hairColor;
-    let haitCut = ["short","ear","chin","neck","shoulder","armpit","mid-back","waist","hip","tailbone","classic","mid-thigh","knee","calf","ankle","floor"];
+    let haitCut = ["short", "ear", "chin", "neck", "shoulder", "armpit", "mid-back", "waist", "hip", "tailbone", "classic", "mid-thigh", "knee", "calf", "ankle", "floor"];
 
     switch (true) {
         case (hairLength < 17.78):
@@ -238,7 +263,7 @@ function getBasicInfoPackage() {
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[3];
             break;
-        case (hairLength < 40.64 ):
+        case (hairLength < 40.64):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[4];
             break;
@@ -262,7 +287,7 @@ function getBasicInfoPackage() {
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[9];
             break;
-        case ( hairLength < 101.6):
+        case (hairLength < 101.6):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[10];
             break;
@@ -278,23 +303,23 @@ function getBasicInfoPackage() {
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[13];
             break;
-        case (hairLength < 177.8 ):
+        case (hairLength < 177.8):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[14];
             break;
-        case ( 177.8 < hairLength):
+        case (177.8 < hairLength):
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[15];
             break;
-        default:   
+        default:
             break;
     }
 
     //Body RNG.
-    let bodyShapes = ["triangle","inverted-triangle","pear","spoon","hourglass","top-hourglass","bottom-hourglass","round","oval","diamond"];
+    let bodyShapes = ["triangle", "inverted-triangle", "pear", "spoon", "hourglass", "top-hourglass", "bottom-hourglass", "round", "oval", "diamond"];
     BIP.bodyShape = bodyShapes[getIndexFloor(bodyShapes.length, 0)];
 
-    let bodyTypes = ["petite","thin","average","slim","skinny","curvaceous","soft","chubby","fit"];
+    let bodyTypes = ["petite", "thin", "average", "slim", "skinny", "curvaceous", "soft", "chubby", "fit"];
     BIP.bodyType = bodyTypes[getIndexFloor(bodyTypes.length, 0)];
 
     return BIP;
@@ -507,7 +532,7 @@ function getMiscInfoPackage() {
                 MIP.starSign = "Sagittarius";
             }
         default:
-            
+
             break;
     }
 
