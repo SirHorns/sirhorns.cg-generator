@@ -5,8 +5,12 @@
     align-items: center; 
 }
 
-.body{
-
+#header_icon{
+    height: auto;
+    max-height: 100%;
+    width: 100px;
+    max-width: 100%;
+    margin: 10px;
 }
 
 #wrapper{
@@ -69,23 +73,29 @@
     background-color: aliceblue; 
 }
 
-#basicinfo{
-
-}
 .InfoContainer{
     padding: 0px 0px 15px 0px;
     height: auto;
     justify-content: center;
     align-items: center;
 }
+.InfoContainerTest{
+    padding: 0px 0px 15px 0px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;}
+
+
+
 .info{
     padding: 17px;
     height: auto;
     justify-content: center;
     align-items: center;
     background-color: white;
-}
-.info-content{
 }
 
 .info table{
@@ -94,17 +104,6 @@
 
 .catDAata{
     margin-left: 5px;
-}
-
-
-.catinfo{
-
-}
-.miscinfo{
-
-}
-.spicyinfo{
-
 }
 
 #cat-text{
@@ -129,24 +128,48 @@
 
 #button-container{
     display: flex;
+    height: auto;
+    width: 300px;
     margin: 10px;
     padding: 15px;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: antiquewhite;
 }
+.catgirl_buttons{
+    margin: 5px auto 5px auto;
+}
 .button{
-    justify-content: center;
-    align-items: center;
     height: auto;
-    width: wrap;
+    width: max-content;
     margin: 5px;
     padding: 6px;
     background-color: darkgray;
     border-radius: 2px 2px;
     box-shadow: 4px 4px grey;
 }
+
+.button_reload{
+    height: auto;
+    width: max-content;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
+    background-color: darkgray;
+    border-radius: 2px 2px;
+    box-shadow: 4px 4px grey;
+}
+
+.button_lock{
+    height: auto;
+    width: max-content;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
+    background-color: darkgray;
+    border-radius: 2px 2px;
+    box-shadow: 4px 4px grey;
+}
+
 
 .button:hover{
     box-shadow: 5px; 
@@ -213,4 +236,53 @@ td{
     align-items: center;
     text-align: center;
 
+}
+
+.catcard{
+    height: auto;
+    width: 550px;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: salmon;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.catcard_title{
+    background-color:antiquewhite;
+    border-radius: 5px;
+    margin: 8px;
+}
+
+.catcard_content{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.catcard_content > div{
+    margin: auto;
+}
+.tablesTest{
+    padding: 8px 8px 8px 8px;
+    height: auto;
+    border-radius: 5px;
+    background-color:antiquewhite;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+}
+.tablesTest td{
+    justify-content: center;
+    align-items: center;
+    text-align:left;
+}
+.cattext{
+    padding: 8px 8px 8px 8px;
+    height: auto;
+    border-radius: 5px;
+    background-color:antiquewhite;
 }

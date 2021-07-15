@@ -40,8 +40,8 @@ const catGirlVars = {
         "chestnut", "buff", "peaches and cream", "umber", "praline",
         "espresso Brown", "porcelain", "hickory", "mustard", "sable",
         "almond", "bisque", "teak", "cacao", "pecan", "saddle ", "brown"],
-    cupSizes:["AA", "A", "B", "C", "D", "E", "F", "G", "H"],
-    bloodType:["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"],
+    cupSizes: ["AA", "A", "B", "C", "D", "E", "F", "G", "H"],
+    bloodType: ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"],
 }
 
 const hairType = ["straight", "wavy", "curly", "coily"];
@@ -443,98 +443,124 @@ function getMiscInfoPackage() {
     MIP.bloodType = bloodType[getIndexFloor(bloodType.length, 0)];
 
     //RNG Starsign
-    let month = getIndexFloor(12, 0);
+    let month = getIndexFloor(12, 1);
     let day;
+    console.log("Month: " + month);
 
     switch (month) {
         case 1:
-            day = getIndexFloor(1, 31);
+            console.log("Case 1 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 20) {
                 MIP.starSign = "Aquarius";
             } else {
                 MIP.starSign = "Capricornus";
             }
+            break;
         case 2:
+            console.log("Case 2 Triggered");
             day = getIndexFloor(1, 29);
             if (day >= 19) {
                 MIP.starSign = "Pisces";
             } else {
                 MIP.starSign = "Aquarius";
             }
+            break;
         case 3:
-            day = getIndexFloor(1, 31);
+            console.log("Case 3 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 21) {
                 MIP.starSign = "Aries";
             } else {
                 MIP.starSign = "Pisces";
             }
+            break;
         case 4:
-            day = getIndexFloor(1, 30);
+            console.log("Case 4 Triggered");
+            day = getIndexFloor(30, 1);
             if (day >= 20) {
                 MIP.starSign = "Taurus";
             } else {
                 MIP.starSign = "Aries";
             }
+            break;
         case 5:
-            day = getIndexFloor(1, 31);
+            console.log("Case 5 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 20) {
                 MIP.starSign = "Gemini";
             } else {
                 MIP.starSign = "Taurus";
             }
+            break;
         case 6:
-            day = getIndexFloor(1, 31);
+            console.log("Case 6 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 22) {
                 MIP.starSign = "Cancer";
             } else {
                 MIP.starSign = "Gemini";
             }
+            break;
         case 7:
-            day = getIndexFloor(1, 31);
+            console.log("Case 7 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 23) {
                 MIP.starSign = "Leo";
             } else {
                 MIP.starSign = "Cancer";
             }
+            break;
         case 8:
-            day = getIndexFloor(1, 31);
+            console.log("Case 8 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 23) {
                 MIP.starSign = "Virgo";
             } else {
                 MIP.starSign = "Leo";
             }
+            break;
         case 9:
-            day = getIndexFloor(1, 30);
+            console.log("Case 9 Triggered");
+            day = getIndexFloor(30, 1);
             if (day >= 23) {
                 MIP.starSign = "Libra";
             } else {
                 MIP.starSign = "Virgo";
             }
+            break;
         case 10:
-            day = getIndexFloor(1, 31);
+            console.log("Case 10 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 24) {
                 MIP.starSign = "Scorpius";
             } else {
                 MIP.starSign = "Libra";
             }
+            break;
         case 11:
-            day = getIndexFloor(1, 30);
+            console.log("Case 11 Triggered");
+            day = getIndexFloor(30, 1);
             if (day >= 22) {
                 MIP.starSign = "Sagittarius";
             } else {
                 MIP.starSign = "Scorpius";
             }
+            break;
         case 12:
-            day = getIndexFloor(1, 31);
+            console.log("Case 12 Triggered");
+            day = getIndexFloor(31, 1);
             if (day >= 22) {
                 MIP.starSign = "Capricornus";
             } else {
                 MIP.starSign = "Sagittarius";
             }
         default:
-
+            console.error("StarSign did not set a value.");
             break;
     }
+
+    console.log("Day: " + day);
 
     //RNG Personality Traits
     MIP.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 0)];
@@ -558,14 +584,14 @@ function exportToCatCard() {
     newCat = makeCat();
     displayInfo();
 
-    var htmlElem = document.getElementById("cat-description");
+    var htmlElem = document.getElementById("hiddencard");
     htmlElem.style.display = "block";
     var tmp = $('#cat-description');
 
 
     function displayInfo() {
-        var wrapper = $('#wrapper'),
-            container = $('.catgirl', wrapper).clone();
+        var wrapper = $('.cg_wrapper'),
+            container = $('.cg_container', wrapper).clone();
         wrapper.empty();
 
         var tmpCon = container.clone();
