@@ -54,31 +54,36 @@ const skinTones = ["ivory", "beige", "alabaster", "honey",
 const cupSizes = ["AA", "A", "B", "C", "D", "E", "F", "G", "H"];
 const bloodType = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
 
+//catgirlArrays
+var catArrayMain = [];
+var catArrayTrash = [];
+
+
 //catgirl object
 function CatGirl() {
-    this.basicInfo = {
-        info: "This Package includes basic descriptive Info",
-        name: "",
-        age: "",
-        hieght: "",
-        wieght: "",
-        skinTone: "",
-        cupSize: "",
-        bodyType: "",
-        eyes: {
-            hasCatEyes: "false",
-            eyeColor: "",
-        },
-        hair: {
-            hairColor: "",
-            hairType: "",
-            hairCut: "",
-            hairLength: "",
-            earColorMatches: "true",
-            tailColorMatches: "true"
+    this.locked = false,
+        this.basicInfo = {
+            info: "This Package includes basic descriptive Info",
+            name: "",
+            age: "",
+            hieght: "",
+            wieght: "",
+            skinTone: "",
+            cupSize: "",
+            bodyType: "",
+            eyes: {
+                hasCatEyes: "false",
+                eyeColor: "",
+            },
+            hair: {
+                hairColor: "",
+                hairType: "",
+                hairCut: "",
+                hairLength: "",
+                earColorMatches: "true",
+                tailColorMatches: "true"
+            }
         }
-    }
-
     this.catInfo = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
@@ -109,7 +114,6 @@ function CatGirl() {
             isFluffy: ""
         }
     }
-
     this.miscInfo = {
         info: "This Package includes Misc Info that might not fit anywhere else.",
         bloodType: "",
@@ -138,7 +142,6 @@ function makeCat() {
     VCAT.basicInfo = getBasicInfoPackage();
     VCAT.catInfo = getCatInfoPackage();
     VCAT.miscInfo = getMiscInfoPackage();
-
 
     return VCAT;
 }
@@ -581,76 +584,85 @@ var newCat;
 
 //HTML FUNCTIONS
 function exportToCatCard() {
-    newCat = makeCat();
+    catArrayMain.push(makeCat());
+
     displayInfo();
 
-    var htmlElem = document.getElementById("hiddencard");
-    htmlElem.style.display = "block";
+    var hiddenCardElem = document.getElementById("content-sub");
+    hiddenCardElem.style.display = "block";
+
+    var hiddenbuttons = document.getElementById("hiddenbuttons");
+    hiddenbuttons.style.display = "block";
     var tmp = $('#cat-description');
 
 
     function displayInfo() {
-        var wrapper = $('.cg_wrapper'),
-            container = $('.cg_container', wrapper).clone();
+        var wrapper = $('#hiddencards');
+        var container = $('.catcard', wrapper).clone();
         wrapper.empty();
 
-        var tmpCon = container.clone();
+        for (var i in catArrayMain) {
+            var tmpCon = container.clone();
 
-        //basicINFO
-        $('.name', tmpCon).text(newCat.basicInfo.name);
-        $('.age', tmpCon).text(newCat.basicInfo.age);
-        $('.hieght', tmpCon).text(newCat.basicInfo.hieght + " cm");
-        $('.wieght', tmpCon).text(newCat.basicInfo.wieght + " kg");
-        $('.skinTone', tmpCon).text(newCat.basicInfo.skinTone);
-        $('.cupSize', tmpCon).text(newCat.basicInfo.cupSize);
-        $('.bodyShape', tmpCon).text(newCat.basicInfo.bodyShape);
-        $('.bodyType', tmpCon).text(newCat.basicInfo.bodyType);
+            tmpCon.attr("id","cg" + i);
+            //basicINFO
+            $('.name', tmpCon).text(catArrayMain[i].basicInfo.name);
+            $('.age', tmpCon).text(catArrayMain[i].basicInfo.age);
+            $('.hieght', tmpCon).text(catArrayMain[i].basicInfo.hieght + " cm");
+            $('.wieght', tmpCon).text(catArrayMain[i].basicInfo.wieght + " kg");
+            $('.skinTone', tmpCon).text(catArrayMain[i].basicInfo.skinTone);
+            $('.cupSize', tmpCon).text(catArrayMain[i].basicInfo.cupSize);
+            $('.bodyShape', tmpCon).text(catArrayMain[i].basicInfo.bodyShape);
+            $('.bodyType', tmpCon).text(catArrayMain[i].basicInfo.bodyType);
 
-        $('.hasCatEyes', tmpCon).text(newCat.basicInfo.eyes.hasCatEyes);
-        $('.eyeColor', tmpCon).text(newCat.basicInfo.eyes.eyeColor);
+            $('.hasCatEyes', tmpCon).text(catArrayMain[i].basicInfo.eyes.hasCatEyes);
+            $('.eyeColor', tmpCon).text(catArrayMain[i].basicInfo.eyes.eyeColor);
 
-        $('.hairColor', tmpCon).text(newCat.basicInfo.hair.hairColor);
-        $('.hairType', tmpCon).text(newCat.basicInfo.hair.hairType);
-        $('.hairCut', tmpCon).text(newCat.basicInfo.hair.hairCut);
-        $('.hairLength', tmpCon).text(newCat.basicInfo.hair.hairLength);
-        $('.earColorMatches', tmpCon).text(newCat.basicInfo.hair.earColorMatches);
-        $('.tailColorMatches', tmpCon).text(newCat.basicInfo.hair.tailColorMatches);
+            $('.hairColor', tmpCon).text(catArrayMain[i].basicInfo.hair.hairColor);
+            $('.hairType', tmpCon).text(catArrayMain[i].basicInfo.hair.hairType);
+            $('.hairCut', tmpCon).text(catArrayMain[i].basicInfo.hair.hairCut);
+            $('.hairLength', tmpCon).text(catArrayMain[i].basicInfo.hair.hairLength);
+            $('.earColorMatches', tmpCon).text(catArrayMain[i].basicInfo.hair.earColorMatches);
+            $('.tailColorMatches', tmpCon).text(catArrayMain[i].basicInfo.hair.tailColorMatches);
 
-        //catINFO
-        $('.eyePupilType', tmpCon).text(newCat.catInfo.eyes.eyePupilType);
-        $('.eyePupilSize', tmpCon).text(newCat.catInfo.eyes.eyePupilSize);
-        $('.eyeColor', tmpCon).text(newCat.catInfo.eyes.eyeColor);
+            //catINFO
+            $('.eyePupilType', tmpCon).text(catArrayMain[i].catInfo.eyes.eyePupilType);
+            $('.eyePupilSize', tmpCon).text(catArrayMain[i].catInfo.eyes.eyePupilSize);
+            $('.eyeColor', tmpCon).text(catArrayMain[i].catInfo.eyes.eyeColor);
 
-        $('.earLength', tmpCon).text(newCat.catInfo.ears.earLength);
-        $('.earSize', tmpCon).text(newCat.catInfo.ears.earSize);
-        $('.earPattern', tmpCon).text(newCat.catInfo.ears.earPattern);
-        $('.earColors', tmpCon).text(newCat.catInfo.ears.earColors);
-        $('.furLength', tmpCon).text(newCat.catInfo.ears.furLength);
-        $('.isFluffy', tmpCon).text(newCat.catInfo.ears.isFluffy);
+            $('.earLength', tmpCon).text(catArrayMain[i].catInfo.ears.earLength);
+            $('.earSize', tmpCon).text(catArrayMain[i].catInfo.ears.earSize);
+            $('.earPattern', tmpCon).text(catArrayMain[i].catInfo.ears.earPattern);
+            $('.earColors', tmpCon).text(catArrayMain[i].catInfo.ears.earColors);
+            $('.furLength', tmpCon).text(catArrayMain[i].catInfo.ears.furLength);
+            $('.isFluffy', tmpCon).text(catArrayMain[i].catInfo.ears.isFluffy);
 
-        $('.hasClaws', tmpCon).text(newCat.catInfo.claws.hasClaws);
-        $('.length', tmpCon).text(newCat.catInfo.claws.length);
-        $('.sharpness', tmpCon).text(newCat.catInfo.claws.sharpness);
-        $('.color', tmpCon).text(newCat.catInfo.claws.color);
+            $('.hasClaws', tmpCon).text(catArrayMain[i].catInfo.claws.hasClaws);
+            $('.length', tmpCon).text(catArrayMain[i].catInfo.claws.length);
+            $('.sharpness', tmpCon).text(catArrayMain[i].catInfo.claws.sharpness);
+            $('.color', tmpCon).text(catArrayMain[i].catInfo.claws.color);
 
-        $('.tailLength', tmpCon).text(newCat.catInfo.tail.tailLength);
-        $('.tailSize', tmpCon).text(newCat.catInfo.tail.tailSize);
-        $('.tailPattern', tmpCon).text(newCat.catInfo.tail.tailPattern);
-        $('.tailColors', tmpCon).text(newCat.catInfo.tail.tailColors);
-        $('.tailHairLength', tmpCon).text(newCat.catInfo.tail.tailHairLength);
-        $('.isFluffy', tmpCon).text(newCat.catInfo.tail.isFluffy);
+            $('.tailLength', tmpCon).text(catArrayMain[i].catInfo.tail.tailLength);
+            $('.tailSize', tmpCon).text(catArrayMain[i].catInfo.tail.tailSize);
+            $('.tailPattern', tmpCon).text(catArrayMain[i].catInfo.tail.tailPattern);
+            $('.tailColors', tmpCon).text(catArrayMain[i].catInfo.tail.tailColors);
+            $('.tailHairLength', tmpCon).text(catArrayMain[i].catInfo.tail.tailHairLength);
+            $('.isFluffy', tmpCon).text(catArrayMain[i].catInfo.tail.isFluffy);
 
-        //miscINFO
-        $('.bloodType', tmpCon).text(newCat.miscInfo.bloodType);
-        $('.starSign', tmpCon).text(newCat.miscInfo.starSign);
+            //miscINFO
+            $('.bloodType', tmpCon).text(catArrayMain[i].miscInfo.bloodType);
+            $('.starSign', tmpCon).text(catArrayMain[i].miscInfo.starSign);
 
-        $('.traitPositive', tmpCon).text(newCat.miscInfo.traits.traitPositive);
-        $('.traitNeutral', tmpCon).text(newCat.miscInfo.traits.traitNeutral);
-        $('.traitNegative', tmpCon).text(newCat.miscInfo.traits.traitNegative);
+            $('.traitPositive', tmpCon).text(catArrayMain[i].miscInfo.traits.traitPositive);
+            $('.traitNeutral', tmpCon).text(catArrayMain[i].miscInfo.traits.traitNeutral);
+            $('.traitNegative', tmpCon).text(catArrayMain[i].miscInfo.traits.traitNegative);
 
-        //spicyINFO
+            //spicyINFO
 
-        wrapper.append(tmpCon);
+            wrapper.append(tmpCon);
+        }
+
+
     }
 }
 

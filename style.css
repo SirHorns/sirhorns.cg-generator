@@ -231,6 +231,11 @@ hr {
     width: 100%;
 }
 
+#hiddencards{
+    display: flex;
+    flex-direction: row;
+}
+
 td{
     justify-content: center;
     align-items: center;
@@ -249,6 +254,7 @@ td{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: auto 10px auto 10px;
 }
 .catcard_title{
     background-color:antiquewhite;
