@@ -62,6 +62,7 @@ var catArrayTrash = [];
 //catgirl object
 function CatGirl() {
     this.locked = false,
+        this.displayed = false,
         this.basicInfo = {
             info: "This Package includes basic descriptive Info",
             name: "",
@@ -448,11 +449,9 @@ function getMiscInfoPackage() {
     //RNG Starsign
     let month = getIndexFloor(12, 1);
     let day;
-    console.log("Month: " + month);
 
     switch (month) {
         case 1:
-            console.log("Case 1 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 20) {
                 MIP.starSign = "Aquarius";
@@ -461,7 +460,7 @@ function getMiscInfoPackage() {
             }
             break;
         case 2:
-            console.log("Case 2 Triggered");
+
             day = getIndexFloor(1, 29);
             if (day >= 19) {
                 MIP.starSign = "Pisces";
@@ -470,7 +469,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 3:
-            console.log("Case 3 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 21) {
                 MIP.starSign = "Aries";
@@ -479,7 +477,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 4:
-            console.log("Case 4 Triggered");
             day = getIndexFloor(30, 1);
             if (day >= 20) {
                 MIP.starSign = "Taurus";
@@ -488,7 +485,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 5:
-            console.log("Case 5 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 20) {
                 MIP.starSign = "Gemini";
@@ -497,7 +493,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 6:
-            console.log("Case 6 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 22) {
                 MIP.starSign = "Cancer";
@@ -506,7 +501,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 7:
-            console.log("Case 7 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 23) {
                 MIP.starSign = "Leo";
@@ -515,7 +509,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 8:
-            console.log("Case 8 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 23) {
                 MIP.starSign = "Virgo";
@@ -524,7 +517,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 9:
-            console.log("Case 9 Triggered");
             day = getIndexFloor(30, 1);
             if (day >= 23) {
                 MIP.starSign = "Libra";
@@ -533,7 +525,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 10:
-            console.log("Case 10 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 24) {
                 MIP.starSign = "Scorpius";
@@ -542,7 +533,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 11:
-            console.log("Case 11 Triggered");
             day = getIndexFloor(30, 1);
             if (day >= 22) {
                 MIP.starSign = "Sagittarius";
@@ -551,7 +541,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 12:
-            console.log("Case 12 Triggered");
             day = getIndexFloor(31, 1);
             if (day >= 22) {
                 MIP.starSign = "Capricornus";
@@ -563,7 +552,6 @@ function getMiscInfoPackage() {
             break;
     }
 
-    console.log("Day: " + day);
 
     //RNG Personality Traits
     MIP.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 0)];
@@ -583,13 +571,74 @@ function getSpiceyInfoPackage() {
 var newCat;
 
 //HTML FUNCTIONS
+function exportCatToHTMLCard(index) {
+    var elemID = "#catCard" + index;
+    var container = $();
+
+    var wrapper = $('#hiddencards');
+    var container = $(elemID, wrapper);
+
+    //basicINFO
+    $('.name', container).text(catArrayMain[index].basicInfo.name);
+    $('.age', container).text(catArrayMain[index].basicInfo.age);
+    $('.hieght', container).text(catArrayMain[index].basicInfo.hieght + " cm");
+    $('.wieght', container).text(catArrayMain[index].basicInfo.wieght + " kg");
+    $('.skinTone', container).text(catArrayMain[index].basicInfo.skinTone);
+    $('.cupSize', container).text(catArrayMain[index].basicInfo.cupSize);
+    $('.bodyShape', container).text(catArrayMain[index].basicInfo.bodyShape);
+    $('.bodyType', container).text(catArrayMain[index].basicInfo.bodyType);
+
+    $('.hasCatEyes', container).text(catArrayMain[index].basicInfo.eyes.hasCatEyes);
+    $('.eyeColor', container).text(catArrayMain[index].basicInfo.eyes.eyeColor);
+
+    $('.hairColor', container).text(catArrayMain[index].basicInfo.hair.hairColor);
+    $('.hairType', container).text(catArrayMain[index].basicInfo.hair.hairType);
+    $('.hairCut', container).text(catArrayMain[index].basicInfo.hair.hairCut);
+    $('.hairLength', container).text(catArrayMain[index].basicInfo.hair.hairLength);
+    $('.earColorMatches', container).text(catArrayMain[index].basicInfo.hair.earColorMatches);
+    $('.tailColorMatches', container).text(catArrayMain[index].basicInfo.hair.tailColorMatches);
+
+    //catINFO
+    $('.eyePupilType', container).text(catArrayMain[index].catInfo.eyes.eyePupilType);
+    $('.eyePupilSize', container).text(catArrayMain[index].catInfo.eyes.eyePupilSize);
+    $('.eyeColor', container).text(catArrayMain[index].catInfo.eyes.eyeColor);
+
+    $('.earLength', container).text(catArrayMain[index].catInfo.ears.earLength);
+    $('.earSize', container).text(catArrayMain[index].catInfo.ears.earSize);
+    $('.earPattern', container).text(catArrayMain[index].catInfo.ears.earPattern);
+    $('.earColors', container).text(catArrayMain[index].catInfo.ears.earColors);
+    $('.furLength', container).text(catArrayMain[index].catInfo.ears.furLength);
+    $('.isFluffy', container).text(catArrayMain[index].catInfo.ears.isFluffy);
+
+    $('.hasClaws', container).text(catArrayMain[index].catInfo.claws.hasClaws);
+    $('.length', container).text(catArrayMain[index].catInfo.claws.length);
+    $('.sharpness', container).text(catArrayMain[index].catInfo.claws.sharpness);
+    $('.color', container).text(catArrayMain[index].catInfo.claws.color);
+
+    $('.tailLength', container).text(catArrayMain[index].catInfo.tail.tailLength);
+    $('.tailSize', container).text(catArrayMain[index].catInfo.tail.tailSize);
+    $('.tailPattern', container).text(catArrayMain[index].catInfo.tail.tailPattern);
+    $('.tailColors', container).text(catArrayMain[index].catInfo.tail.tailColors);
+    $('.tailHairLength', container).text(catArrayMain[index].catInfo.tail.tailHairLength);
+    $('.isFluffy', container).text(catArrayMain[index].catInfo.tail.isFluffy);
+
+    //miscINFO
+    $('.bloodType', container).text(catArrayMain[index].miscInfo.bloodType);
+    $('.starSign', container).text(catArrayMain[index].miscInfo.starSign);
+
+    $('.traitPositive', container).text(catArrayMain[index].miscInfo.traits.traitPositive);
+    $('.traitNeutral', container).text(catArrayMain[index].miscInfo.traits.traitNeutral);
+    $('.traitNegative', container).text(catArrayMain[index].miscInfo.traits.traitNegative);
+
+    //spicyINFO
+
+}
+
 function exportToCatCard() {
     catArrayMain.push(makeCat());
 
     displayInfo();
 
-    var hiddenCardElem = document.getElementById("content-sub");
-    hiddenCardElem.style.display = "block";
 
     var hiddenbuttons = document.getElementById("hiddenbuttons");
     hiddenbuttons.style.display = "block";
@@ -598,13 +647,25 @@ function exportToCatCard() {
 
     function displayInfo() {
         var wrapper = $('#hiddencards');
-        var container = $('.catcard', wrapper).clone();
+        var container = $('#CatCardTemplate').clone();
         wrapper.empty();
 
-        for (var i in catArrayMain) {
-            var tmpCon = container.clone();
 
-            tmpCon.attr("id","cg" + i);
+
+        for (var i in catArrayMain) {
+
+            //Makes a copy of Container to fill with CatData
+            var tmpCon = container.clone();
+            //SetID of cloned html card
+            tmpCon.attr("id", 'catCard' + i);
+            $('.button_reload', tmpCon).attr("id", i);
+
+            tmpCon.css("display", "block");
+
+
+
+            //POPULATE CARD WITH DATA
+
             //basicINFO
             $('.name', tmpCon).text(catArrayMain[i].basicInfo.name);
             $('.age', tmpCon).text(catArrayMain[i].basicInfo.age);
@@ -659,13 +720,32 @@ function exportToCatCard() {
 
             //spicyINFO
 
+            catArrayMain[i].displayed = true;
             wrapper.append(tmpCon);
+
+
+
         }
 
 
     }
 }
 
+function rerollCat(button_id) {
+    if (!catArrayMain[button_id].locked) {
+        var newCat = makeCat();
+        catArrayMain[button_id] = newCat;
+        exportCatToHTMLCard(button_id);
+    }
+}
+
+function lockToggle(button_id){
+    if (catArrayMain[button_id].locked) {
+        catArrayMain[button_id].locked = false;
+    }else{
+        catArrayMain[button_id].locked = true;
+    }
+}
 
 //RNG functions
 function getIndexFloor(max, min) {
