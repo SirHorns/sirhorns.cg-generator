@@ -61,7 +61,30 @@ var catArrayTrash = [];
 
 //catgirl object
 function CatGirl() {
-    this.locked = false
+    this.lock = {
+        state: 'UNLOCK',
+        transitions: {
+            LOCK: {
+                toggle() {
+                    this.state = 'UNLOCK'
+                }
+            },
+            UNLOCK: {
+                toggle() {
+                    this.state = 'LOCK'
+                },
+            },
+        },
+        dispatch(actionName) {
+            const action = this.transitions[this.state][actionName];
+
+            if (action) {
+                action.call(this);
+            } else {
+                console.log('Invalid action');
+            }
+        },
+    }
     this.displayed = false
     this.basicInfo = {
         info: "This Package includes basic descriptive Info",
@@ -123,12 +146,14 @@ function CatGirl() {
             traitPositive: "",
             traitNeutral: "",
             traitNegative: "",
-        }
+        },
     }
     this.spiceyInfo = {
         info: "This Package includes Spicey Info"
     }
 }
+
+
 //global catgirl var
 var VCAT;
 
@@ -573,10 +598,7 @@ var newCat;
 //HTML FUNCTIONS
 function exportCatToHTMLCard(index) {
     var elemID = "#catCard" + index;
-    var container = $();
-
-    var wrapper = $('#hiddencards');
-    var container = $(elemID, wrapper);
+    var container = $(elemID);
 
     //basicINFO
     $('.name', container).text(catArrayMain[index].basicInfo.name);
@@ -590,8 +612,10 @@ function exportCatToHTMLCard(index) {
 
     $('.hasCatEyes', container).text(catArrayMain[index].basicInfo.eyes.hasCatEyes);
     $('.eyeColor', container).text(catArrayMain[index].basicInfo.eyes.eyeColor);
+    $('.eyeColorExample', container).css('background-color', catArrayMain[index].basicInfo.eyes.eyeColor);
 
     $('.hairColor', container).text(catArrayMain[index].basicInfo.hair.hairColor);
+    $('.hairColorExample', container).css('background-color', catArrayMain[index].basicInfo.hair.hairColor);
     $('.hairType', container).text(catArrayMain[index].basicInfo.hair.hairType);
     $('.hairCut', container).text(catArrayMain[index].basicInfo.hair.hairCut);
     $('.hairLength', container).text(catArrayMain[index].basicInfo.hair.hairLength);
@@ -661,6 +685,13 @@ function exportToCatCard() {
 
             tmpCon.css("display", "block");
 
+            if(catArrayMain[i].lock.state == 'UNLOCK'){
+                $('.icon-unlocked', tmpCon).css('display','block');
+                $('.icon-locked', tmpCon).css('display','none');
+            }else{
+                $('.icon-unlocked', tmpCon).css('display','none');
+                $('.icon-locked', tmpCon).css('display','block');
+            }
 
 
             //POPULATE CARD WITH DATA
@@ -677,8 +708,10 @@ function exportToCatCard() {
 
             $('.hasCatEyes', tmpCon).text(catArrayMain[i].basicInfo.eyes.hasCatEyes);
             $('.eyeColor', tmpCon).text(catArrayMain[i].basicInfo.eyes.eyeColor);
+            $('.eyeColorExample', tmpCon).css('background-color', catArrayMain[i].basicInfo.eyes.eyeColor);
 
             $('.hairColor', tmpCon).text(catArrayMain[i].basicInfo.hair.hairColor);
+            $('.hairColorExample', container).css('background-color', catArrayMain[i].basicInfo.hair.hairColor);
             $('.hairType', tmpCon).text(catArrayMain[i].basicInfo.hair.hairType);
             $('.hairCut', tmpCon).text(catArrayMain[i].basicInfo.hair.hairCut);
             $('.hairLength', tmpCon).text(catArrayMain[i].basicInfo.hair.hairLength);
@@ -726,35 +759,27 @@ function exportToCatCard() {
 }
 
 function rerollCat(button_id) {
-    if (!catArrayMain[button_id].locked) {
+    if (catArrayMain[button_id].lock.state == 'UNLOCK') {
         var newCat = makeCat();
         catArrayMain[button_id] = newCat;
         exportCatToHTMLCard(button_id);
     }
 }
 
-function lockToggle(button_id) {
-    var elemID = button_id;
-    var lock;
+function lockToggle(button) {
+    catArrayMain[button.id].lock.dispatch('toggle');
 
-    var wrapper = $('#hiddenbuttons');
-    var container = $(elemID, wrapper);
+    var wrapper = $('#catCard' + button.id);
+    var container = $('.button_lock', wrapper);
 
-    if (catArrayMain[button_id].locked) {
-        catArrayMain[button_id].locked = false;
-        lock = true;
-    } else {
-        catArrayMain[button_id].locked = true;
-        lock = false;
+    if(catArrayMain[button.id].lock.state == 'UNLOCK'){
+        $('.icon-unlocked', container).css('display','block');
+        $('.icon-locked', container).css('display','none');
+    }else{
+        $('.icon-unlocked', container).css('display','none');
+        $('.icon-locked', container).css('display','block');
     }
-
-    if (lock) {
-        $('.icon-unlocked', container).css("display", "block");
-        $('.icon-locked', container).css("display", "none");
-    } else {
-        $('.icon-locked', container).css("display", "block");
-        $('.icon-unlocked', container).css("display", "none");
-    }
+    
 }
 
 //RNG functions

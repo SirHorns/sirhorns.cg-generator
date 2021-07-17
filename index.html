@@ -68,6 +68,7 @@
                             <tr>
                                 <td>Eye Color:</td>
                                 <td><span class="catData eyeColor">#FFFFFF</span></td>
+                                <td class="eyeColorExample colorExample"></td>
                             </tr>
                             <tr>
                                 <td>Body Type:</td>
@@ -84,6 +85,7 @@
                             <tr>
                                 <td>Hair Color:</td>
                                 <td><span class="catData hairColor">#FFFFFF</span></td>
+                                <td class="hairColorExample colorExample"></td>
                             </tr>
                             <tr>
                                 <td>Hair Length:</td>
@@ -167,8 +169,8 @@
             </div>
         </div>
 
-        <div class="catgirl_buttons hiddencards">
-            <button id="" class="button button_reload" onclick="rerollCat(this.id)">
+        <div class="catgirl_buttons">
+            <button id="" class="catgirl_button button_reload" onclick="rerollCat(this.id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M20.944 12.979c-.489 4.509-4.306 8.021-8.944 8.021-2.698 0-5.112-1.194-6.763-3.075l1.245-1.633c1.283 1.645 
                             3.276 2.708 5.518 2.708 3.526 0 6.444-2.624 6.923-6.021h-2.923l4-5.25 4 5.25h-3.056zm-15.864-1.979c.487-3.387 
@@ -177,11 +179,13 @@
                 </svg>
             </button>
 
-            <button id="" class="button button_lock" onclick="lockToggle(this.id)">
-                <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <button id="" class="catgirl_button button_lock" onclick="lockToggle(this,this.id)">
+                <svg class="icon-unlocked" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24">
                     <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 17h-8v-6h2v-2c0-1.103-.897-2-2-2s-2 
                         .897-2 2v1h-1v-1c0-1.656 1.343-3 3-3s3 1.344 3 3v2h5v6z" />
                 </svg>
+
                 <svg class="icon-locked" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 
                         12 12 12 12-5.373 12-12-5.373-12-12-12zm4 17h-8v-6h8v6zm-6-6v-2c0-1.104.897-2 2-2s2 .896 2 2v2h1v-2c0-1.656-1.343-3-3-3s-3 
@@ -189,8 +193,13 @@
                 </svg>
             </button>
 
-            <button id="" class="button button_json" onclick="onDownload(this.id)">
-                Download JSON
+            <button id="" class="catgirl_button button_json" onclick="onDownload(this.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M15 10h4l-7 8-7-8h4v-10h6v10zm3.213-8.246l-1.213 1.599c2.984 1.732 5 4.955 5 
+                        8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 
+                        2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z" />
+                </svg>
             </button>
         </div>
 
