@@ -61,30 +61,30 @@ var catArrayTrash = [];
 
 //catgirl object
 function CatGirl() {
-    this.locked = false,
-        this.displayed = false,
-        this.basicInfo = {
-            info: "This Package includes basic descriptive Info",
-            name: "",
-            age: "",
-            hieght: "",
-            wieght: "",
-            skinTone: "",
-            cupSize: "",
-            bodyType: "",
-            eyes: {
-                hasCatEyes: "false",
-                eyeColor: "",
-            },
-            hair: {
-                hairColor: "",
-                hairType: "",
-                hairCut: "",
-                hairLength: "",
-                earColorMatches: "true",
-                tailColorMatches: "true"
-            }
+    this.locked = false
+    this.displayed = false
+    this.basicInfo = {
+        info: "This Package includes basic descriptive Info",
+        name: "",
+        age: "",
+        hieght: "",
+        wieght: "",
+        skinTone: "",
+        cupSize: "",
+        bodyType: "",
+        eyes: {
+            hasCatEyes: "false",
+            eyeColor: "",
+        },
+        hair: {
+            hairColor: "",
+            hairType: "",
+            hairCut: "",
+            hairLength: "",
+            earColorMatches: "true",
+            tailColorMatches: "true"
         }
+    }
     this.catInfo = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
@@ -640,16 +640,13 @@ function exportToCatCard() {
     displayInfo();
 
 
-    var hiddenbuttons = document.getElementById("hiddenbuttons");
-    hiddenbuttons.style.display = "block";
-    var tmp = $('#cat-description');
-
+    var hiddenbuttons = $('.hiddenbuttons');
+    hiddenbuttons.css("display", "block");
 
     function displayInfo() {
         var wrapper = $('#hiddencards');
         var container = $('#CatCardTemplate').clone();
         wrapper.empty();
-
 
 
         for (var i in catArrayMain) {
@@ -659,6 +656,8 @@ function exportToCatCard() {
             //SetID of cloned html card
             tmpCon.attr("id", 'catCard' + i);
             $('.button_reload', tmpCon).attr("id", i);
+            $('.button_lock', tmpCon).attr("id", i);
+            $('.button_json', tmpCon).attr("id", i);
 
             tmpCon.css("display", "block");
 
@@ -722,12 +721,7 @@ function exportToCatCard() {
 
             catArrayMain[i].displayed = true;
             wrapper.append(tmpCon);
-
-
-
         }
-
-
     }
 }
 
@@ -739,11 +733,27 @@ function rerollCat(button_id) {
     }
 }
 
-function lockToggle(button_id){
+function lockToggle(button_id) {
+    var elemID = button_id;
+    var lock;
+
+    var wrapper = $('#hiddenbuttons');
+    var container = $(elemID, wrapper);
+
     if (catArrayMain[button_id].locked) {
         catArrayMain[button_id].locked = false;
-    }else{
+        lock = true;
+    } else {
         catArrayMain[button_id].locked = true;
+        lock = false;
+    }
+
+    if (lock) {
+        $('.icon-unlocked', container).css("display", "block");
+        $('.icon-locked', container).css("display", "none");
+    } else {
+        $('.icon-locked', container).css("display", "block");
+        $('.icon-unlocked', container).css("display", "none");
     }
 }
 
@@ -779,8 +789,8 @@ function download(content, fileName, contentType) {
     a.click();
 }
 
-function onDownload() {
-    download(JSON.stringify(newCat, null, 2), "Cat-Girl-" + newCat.basicInfo.name + ".json", "text/plain");
+function onDownload(button_id) {
+    download(JSON.stringify(catArrayMain[button_id], null, 2), "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json", "text/plain");
 }
 
 /* function doThing() {

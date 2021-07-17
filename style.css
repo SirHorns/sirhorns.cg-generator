@@ -105,7 +105,6 @@
 }
 
 #cat-text{
-    
     width: 400px;
     margin: 10px 0px 10px 10px;
     
@@ -137,11 +136,36 @@
 }
 .catgirl_buttons{
     margin: 5px auto 5px auto;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
 }
-.button{
+/* .button{
     height: auto;
     width: max-content;
     margin: 5px;
+    padding: 6px;
+    background-color: darkgray;
+    border-radius: 2px 2px;
+    box-shadow: 4px 4px grey;
+} */
+
+.button{
+    height: auto;
+    width: max-content;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
+    background-color: darkgray;
+    border-radius: 2px 2px;
+    box-shadow: 4px 4px grey;
+}
+
+/* .button_json{
+    height: auto;
+    width: max-content;
+    margin: 5px 5px 5px 5px;
     padding: 6px;
     background-color: darkgray;
     border-radius: 2px 2px;
@@ -166,7 +190,7 @@
     background-color: darkgray;
     border-radius: 2px 2px;
     box-shadow: 4px 4px grey;
-}
+} */
 
 
 .button:hover{
@@ -298,5 +322,13 @@ td{
     height: auto;
     border-radius: 5px;
     background-color:antiquewhite;
+}
+
+.button_lock .icon-unlocked{
+    display: block;
+}
+
+.button_lock .icon-locked{
+    display: none;
 }
 
