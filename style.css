@@ -1,3 +1,10 @@
+.body{
+    margin: auto;
+    height: auto;
+    width: min-content;
+    max-height: 100%;
+    max-width: 100%;
+}
 .header{
     display: flex;
     flex-direction: row;  
@@ -13,12 +20,7 @@
     margin: 10px;
 }
 
-#wrapper{
-    display: flex;
-    flex-direction: row;
-}
-
-#content-top{
+.body-content{
     justify-content: center;
     align-items: center;
     height: auto;
@@ -28,17 +30,10 @@
     flex-direction: column;
 }
 
-.content-top  h2{
+.body-content  h2{
     margin: 20px;
 }
 
-.content-sub{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    height: auto;
-    width:fit-content;
-}
 
 .catgirl{
     background-color: antiquewhite;
@@ -136,7 +131,6 @@
 }
 .catgirl_buttons{
     margin: 5px auto 5px auto;
-
     justify-content: center;
     align-items: center;
     display: flex;
@@ -202,12 +196,27 @@
     width: 40px;
     margin: 5px 5px 5px 5px;
     padding: 6px;
+    background-color: pink;
+    border: 2px solid white;
+    border-radius: 100%;
+}
+
+.catgirl_button:hover{
+    background-color: white;
+    border: 2px solid pink;
+}
+
+.catgen_button{
+    height: 40px;
+    width: 40px;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
     background-color: darkgray;
     border-radius: 2px 2px;
     box-shadow: 4px 4px grey;
 }
 
-.catgirl_button:hover{
+.catgen_button:hover{
     box-shadow: 5px; 
     box-shadow: 4px 4px ;
 }
@@ -253,6 +262,26 @@ hr {
     margin: 0px 0px 0px 0px;
 }
 
+.horns-footer{
+
+}
+
+.horns-footer ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    justify-content: center;
+    align-items: center; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+.horns-footer-content{
+    
+}
+
 .footer{
     margin-top: 15px;
     margin-bottom: 15px;
@@ -261,23 +290,22 @@ hr {
     justify-content: center;
     align-items: center; 
 
-    position:fixed;
     left: 0;
-    bottom: 0;
+    bottom: 1;
 
     width: 100%;
 }
 
-#hiddencards{
+.catcard-container{
     justify-content: center;
     align-items: center;
     display: flex;
-
+    flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
 }
 
-#hiddencards > *{
+.catcard-container > *{
     flex: 1 1 1;
 }
 
@@ -290,7 +318,7 @@ td{
 
 .catcard{
     height: auto;
-    width: 550px;
+    
     max-height: 100%;
     max-width: 100%;
     border-radius: 10px;
@@ -351,4 +379,9 @@ td{
     width: 5px; 
     background-color: rgb(0, 0, 0);
     outline: 4px solid rgb(0, 0, 0);
+}
+
+#catCount{
+    text-align: center;
+    width: 50px;
 }
