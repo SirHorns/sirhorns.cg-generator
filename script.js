@@ -85,8 +85,8 @@ function CatGirl() {
                 console.log('Invalid action');
             }
         },
-    }
-    this.displayed = false
+    };
+    this.displayed = false;
     this.basicInfo = {
         info: "This Package includes basic descriptive Info",
         name: "",
@@ -108,8 +108,8 @@ function CatGirl() {
             earColorMatches: "true",
             tailColorMatches: "true"
         }
-    }
-    this.catInfo = {
+    };
+    this.basicInfo = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
             eyePupilType: "",
@@ -138,8 +138,8 @@ function CatGirl() {
             tailHairLength: "",
             isFluffy: ""
         }
-    }
-    this.miscInfo = {
+    };
+    this.catInfo = {
         info: "This Package includes Misc Info that might not fit anywhere else.",
         bloodType: "",
         starSign: "",
@@ -148,10 +148,10 @@ function CatGirl() {
             traitNeutral: "",
             traitNegative: "",
         },
-    }
+    };
     this.spiceyInfo = {
         info: "This Package includes Spicey Info"
-    }
+    };
 }
 
 
@@ -171,7 +171,7 @@ function makeCat() {
 }
 
 //Cat Gen Functions
-function genCats() {
+function generateCats() {
     var catCount = $('#catCount').val();
     var tmpArray = [];
 
@@ -196,14 +196,14 @@ function removeCat(button_id) {
             catArrayMain.splice(catArrayMain.length - 1, 1);
             exportToCatCard();
         }
-    }else{
+    } else {
         //if the id is not 'endOfArrayRemove' then it should be the index of the card from the card remove button
         if (catArrayMain[button_id].lock.state == 'UNLOCK') {
             catArrayMain.splice(button_id, 1);
             exportToCatCard();
         }
     }
-    
+
 };
 
 function rerollCats() {
@@ -676,7 +676,7 @@ function exportToCatCard() {
         $('.button_reload', tmpCon).attr("id", i);
         $('.button_lock', tmpCon).attr("id", i);
         $('.button_json', tmpCon).attr("id", i);
-        
+
 
         //unhide the card.
         tmpCon.css("display", "block");

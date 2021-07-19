@@ -1,21 +1,45 @@
-.body{
-    margin: auto;
-    height: auto;
-    width: min-content;
-    max-height: 100%;
-    max-width: 100%;
+:root {
+    --primary: #ff9e80;
+    --primary-light: #ffd0b0;
+    --primary-dark: #c96f53;
+
+    --secondary: #795548;
+    --secondary-light: #a98274;
+    --secondary-dark: #4b2c20;
+
+    --text-on-primary: #000000;
+    --text-on-secondary: #ffffff;
+
+    --primary-button: pink;
+    --primary-button: white;
 }
-.header{
+
+
+.horns-header{
+    height: auto;
+    width: max-content;
+    margin: auto;
     display: flex;
     flex-direction: row;  
     justify-content: center;
     align-items: center; 
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+    border-radius: 15px;
+
+    border-width: 5px 5px 5px 5px;
+    border-style: solid;
+    
+    border-top-color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
+    border-left-color: var(--primary-dark);
+    border-right-color: var(--primary-dark);
 }
 
-#header_icon{
+.horns-header-icon{
     height: auto;
     max-height: 100%;
-    width: 100px;
+    width: 70px;
     max-width: 100%;
     margin: 10px;
 }
@@ -23,202 +47,205 @@
 .body-content{
     justify-content: center;
     align-items: center;
-    height: auto;
+    height: 750px;
     width: auto;
-    margin: auto;
+    min-width: 50%;
+    margin: 15px 25px auto 25px;
     display: flex;
     flex-direction: column;
+    
+    border-radius: 10px;
+    overflow: hidden;
+
+    
+    border-width: 20px 5px 5px 5px;
+    border-style: solid;
+    
+    border-top-color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
+    border-left-color: var(--primary-dark);
+    border-right-color: var(--primary-dark);
 }
 
-.body-content  h2{
-    margin: 20px;
+
+.body-button-container{
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--primary);
 }
 
-
-.catgirl{
-    background-color: antiquewhite;
+.body-button-container div{
     display: flex;
     flex-direction: row;
-    width: auto;
     justify-content: center;
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    
     padding: 5px;
 }
-.package{
-    max-width: 100%;
-    max-height: 100%;
-    height: min-content;
-    width: 270px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(228, 214, 196);
-    margin: 10px;
+
+.body-button-container #catCount{
+    margin: 7px;
 }
 
-.package  div{
-    
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    
-}
-.package  h4{
-    text-align: center;
-    background-color: aliceblue; 
-}
-
-.InfoContainer{
-    padding: 0px 0px 15px 0px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-}
-.InfoContainerTest{
-    padding: 0px 0px 15px 0px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    width: 1000px;
-    display: flex;
-    flex-direction: row;}
-
-
-
-.info{
-    padding: 17px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-.info table{
-    margin: 0px 0px 0px 10px;
-}
-
-.catDAata{
-    margin-left: 5px;
-}
-
-#cat-text{
-    width: 400px;
-    margin: 10px 0px 10px 10px;
-    
-}
-
-#cat-text .block{
-    padding: 15px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-#cat-text h4{
-    text-align: center;
-    background-color: aliceblue; 
-}
-
-#button-container{
-    display: flex;
-    height: auto;
-    width: 300px;
-    margin: 10px;
-    padding: 15px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: antiquewhite;
-}
-.catgirl_buttons{
-    margin: 5px auto 5px auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-
-}
-/* .button{
-    height: auto;
-    width: max-content;
-    margin: 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
-} */
-
-.button{
-    height: auto;
-    width: max-content;
-    margin: 5px 5px 5px 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
-}
-
-/* .button_json{
-    height: auto;
-    width: max-content;
-    margin: 5px 5px 5px 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
-}
-
-.button_reload{
-    height: auto;
-    width: max-content;
-    margin: 5px 5px 5px 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
-}
-
-.button_lock{
-    height: auto;
-    width: max-content;
-    margin: 5px 5px 5px 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
-} */
-
-.button:hover{
-    box-shadow: 5px; 
-    box-shadow: 4px 4px ;
-}
-
-.catgirl_button{
+.body-button-catgeneration{
     height: 40px;
     width: 40px;
     margin: 5px 5px 5px 5px;
     padding: 6px;
-    background-color: pink;
-    border: 2px solid white;
+    background-color: var(--secondary);
+    border: 2px solid black;
+    border-radius: 100%;
+    color: var(--text-on-secondary);
+}
+
+.body-button-catgeneration:hover{
+    background-color: white;
+    color: var(--text-on-primary);
+    border: 2px solid var(--secondary);
+}
+
+.button_generateCats{
+    height: 40px;
+    width: max-content;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
+    border-radius: 2px 2px;
+    border-radius: 8px;
+}
+
+.catcard-container{
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px auto auto auto;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.catcard{
+    height: min-content;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px 5px 5px 5px;
+
+    background-color: var(--secondary-light);
+
+    border-width: 5px 5px 5px 5px;
+    border-style: solid;
+    
+    border-top-color: var(--secondary);
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+
+.catcard-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.catcard-content > div{
+    margin: 0px 5px 0px 5px;
+}
+
+.catcard-button-container{
+    display: flex;
+    flex-direction: column;
+
+    height: min-content;
+
+    background-color: var(--primary-light);
+
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-radius: 10px;
+    
+    border-top-color: var(--secondary);
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+
+.catcard-button{
+    height: 40px;
+    width: 40px;
+    margin: 5px 5px 5px 5px;
+    padding: 6px;
+    background-color: var(--primary);
+    border: 2px solid black;
     border-radius: 100%;
 }
 
-.catgirl_button:hover{
+.catcard-button:hover{
     background-color: white;
-    border: 2px solid pink;
+    border: 2px solid var(--primary);
 }
 
-.catgen_button{
-    height: 40px;
-    width: 40px;
-    margin: 5px 5px 5px 5px;
-    padding: 6px;
-    background-color: darkgray;
-    border-radius: 2px 2px;
-    box-shadow: 4px 4px grey;
+.button_lock{
+    margin-bottom: 20px;
 }
 
-.catgen_button:hover{
-    box-shadow: 5px; 
-    box-shadow: 4px 4px ;
+.catcard-button-container > .button_removeCat{
+    margin-bottom: 20px;
+}
+
+.catcard-content-title{
+    background-color:var(--primary);
+    color: var(--text-on-primary);
+    border-radius: 5px;
+    margin: 8px;
+
+    background-color: var(--primary-light);
+
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-radius: 10px;
+    
+    border-top-color: var(--secondary);
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+
+.catcard-content-tableinfo-container{
+    padding: 8px 8px 8px 8px;
+    height: auto;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--primary-light);
+
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-radius: 10px;
+    
+    border-top-color: var(--secondary);
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+
+.catcard-content-tableinfo-container td{
+    justify-content: center;
+    align-items: center;
+    text-align:left;
 }
 
 hr {
@@ -263,12 +290,12 @@ hr {
 }
 
 .horns-footer{
-
+    margin: 10px 0px 0px 0px;
 }
 
 .horns-footer ul{
     padding: 0;
-    margin: 0;
+    margin: 0px;
     list-style: none;
     justify-content: center;
     align-items: center; 
@@ -282,83 +309,12 @@ hr {
     
 }
 
-.footer{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: row;  
-    justify-content: center;
-    align-items: center; 
-
-    left: 0;
-    bottom: 1;
-
-    width: 100%;
-}
-
-.catcard-container{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-}
-
-.catcard-container > *{
-    flex: 1 1 1;
-}
-
 td{
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
-.catcard{
-    height: auto;
-    
-    max-height: 100%;
-    max-width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: salmon;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto 5px 5px 5px;
-}
-.catcard_title{
-    background-color:antiquewhite;
-    border-radius: 5px;
-    margin: 8px;
-}
-
-.catcard_content{
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-}
-.catcard_content > div{
-    margin: auto;
-}
-.tablesTest{
-    padding: 8px 8px 8px 8px;
-    height: auto;
-    border-radius: 5px;
-    background-color:antiquewhite;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-
-}
-.tablesTest td{
-    justify-content: center;
-    align-items: center;
-    text-align:left;
-}
 .cattext{
     padding: 8px 8px 8px 8px;
     height: auto;
