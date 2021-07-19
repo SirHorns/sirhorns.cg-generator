@@ -12,6 +12,8 @@
 
     --primary-button: pink;
     --primary-button: white;
+
+
 }
 
 
@@ -135,6 +137,7 @@
 
 .catcard{
     height: min-content;
+    width: 800px;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -221,6 +224,16 @@
     border-right-color: var(--secondary);
 }
 
+.catcard-content-containers-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.catcard-content-info-container{
+    height: auto;
+    width: 100%;
+}
+
 .catcard-content-tableinfo-container{
     padding: 8px 8px 8px 8px;
     height: auto;
@@ -246,6 +259,27 @@
     justify-content: center;
     align-items: center;
     text-align:left;
+}
+
+.catcard-content-cattext-container{
+    padding: 8px 8px 8px 8px;
+    height: auto;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--primary-light);
+
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-radius: 10px;
+    
+    border-top-color: var(--secondary);
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+    border-right-color: var(--secondary);
 }
 
 hr {
