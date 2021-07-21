@@ -833,7 +833,7 @@ function download(content, fileName, contentType) {
 
 function onDownload(button_id) {
     download(JSON.stringify(catArrayMain[button_id], null, 2), "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json", "text/plain");
-}
+};
 
 /* function doThing() {
     const newCat = makeCat();
@@ -843,3 +843,121 @@ function onDownload(button_id) {
     div.innerHTML = '<span class="name">' + newCat +'</span>';
     mainContainer.appendChild(div);
 } */
+
+
+function tem() {
+    this.index = 0
+    this.name ="ITEM",
+    this.weight= 0
+};
+
+var opt = [];
+var item1 = new tem
+item1.name = "Booba";
+item1.weight = 5;
+opt[0] = item1;
+
+var item2 = new tem
+item2.name = "Tea";
+item2.weight = 5;
+opt[1] = item2;
+
+console.log("===========")
+/* for (let index = 2; index < 5; index++) {
+    var temp = new tem;
+    temp.weight = getIndexFloor(10,1);
+
+    opt[index] = temp;
+} */
+
+function Eyes(){
+    this.eyeConditions={
+        noCondition: true,
+        heterochromia: false,
+        blind: false,
+    }
+    this.leftEye={
+        iris:{
+            color: '',
+            section:{
+                center:{
+                    top:{
+
+                    },
+                    bottom:{
+
+                    },
+                },
+                left:{
+                    top:{
+
+                    },
+                    middle:{
+
+                    },
+                    bottom:{
+
+                    },
+                },
+                right:{
+                    top:{
+
+                    },
+                    middle:{
+
+                    },
+                    bottom:{
+
+                    },
+                },
+            }
+        }
+    },
+    this.rightEye={
+
+    }
+}
+
+console.log(opt)
+for(var item in opt){
+    console.log(opt[item].name + ": " + opt[item].weight);
+}
+
+console.log("===========")
+
+for (let index = 0; index < 10; index++) {
+    var temp = weighted_random(opt);
+    console.log("Pull" + index + ": " + temp.name +": "+ temp.weight);
+}
+
+function weighted_random(options) {
+    var i;
+
+    var weights = [];
+
+    for (i = 0; i < options.length; i++)
+        weights[i] = options[i].weight + (weights[i - 1] || 0);
+    
+    var random = Math.random() * weights[weights.length - 1];
+    
+    for (i = 0; i < weights.length; i++)
+        if (weights[i] > random)
+            break;
+    return options[i];
+};
+
+const eyeConditions = [
+    {
+        name: "heterochromia",
+        weight: .6
+    },
+    {
+        name: "normal",
+        weight: 99.4
+    }
+];
+
+for (let index = 0; index < 50; index++) {
+    var temp = weighted_random(eyeConditions);
+    console.log("Pull" + index + ": " + temp.name +": "+ temp.weight);
+}
