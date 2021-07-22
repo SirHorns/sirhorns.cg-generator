@@ -4,54 +4,141 @@ var positivePersonalityTraits;
 var negativePersonalityTraits;
 var neutralPersonalityTraits;
 
-$.getJSON('https://sirhorns.github.io/Data/femaleNames.json', function (json) {
+$.getJSON("https://sirhorns.github.io/Data/femaleNames.json", function (json) {
     femaleNames = json.femaleNames;
 });
 
-$.getJSON("https://sirhorns.github.io/Data/positivePersonalityTraits.json", function (json) {
-    positivePersonalityTraits = json.positivePersonalityTraits;
-});
+$.getJSON(
+    "https://sirhorns.github.io/Data/positivePersonalityTraits.json",
+    function (json) {
+        positivePersonalityTraits = json.positivePersonalityTraits;
+    }
+);
 
-$.getJSON("https://sirhorns.github.io/Data/negativePersonalityTraits.json", function (json) {
-    negativePersonalityTraits = json.negativePersonalityTraits;
-});
+$.getJSON(
+    "https://sirhorns.github.io/Data/negativePersonalityTraits.json",
+    function (json) {
+        negativePersonalityTraits = json.negativePersonalityTraits;
+    }
+);
 
-$.getJSON("https://sirhorns.github.io/Data/neutralPersonalityTraits.json", function (json) {
-    neutralPersonalityTraits = json.neutralPersonalityTraits;
-});
+$.getJSON(
+    "https://sirhorns.github.io/Data/neutralPersonalityTraits.json",
+    function (json) {
+        neutralPersonalityTraits = json.neutralPersonalityTraits;
+    }
+);
 
 const catGirlVars = {
     hair: {
         hairType: ["straight", "wavy", "curly", "coily"],
-        haitCut: ["short", "ear", "chin", "neck", "shoulder",
-            "armpit", "mid-back", "waist", "hip", "tailbone",
-            "classic", "mid-thigh", "knee", "calf", "ankle", "floor"]
+        haitCut: [
+            "short",
+            "ear",
+            "chin",
+            "neck",
+            "shoulder",
+            "armpit",
+            "mid-back",
+            "waist",
+            "hip",
+            "tailbone",
+            "classic",
+            "mid-thigh",
+            "knee",
+            "calf",
+            "ankle",
+            "floor",
+        ],
     },
-    eyes: {
-
-    },
+    eyes: {},
     body: {
-        bodyShapes: ["triangle", "inverted-triangle", "pear", "spoon", "hourglass",
-            "top-hourglass", "bottom-hourglass", "round", "oval", "diamond"],
-        bodyTypes: ["petite", "thin", "average", "slim",
-            "skinny", "curvaceous", "soft", "chubby", "fit"]
+        bodyShapes: [
+            "triangle",
+            "inverted-triangle",
+            "pear",
+            "spoon",
+            "hourglass",
+            "top-hourglass",
+            "bottom-hourglass",
+            "round",
+            "oval",
+            "diamond",
+        ],
+        bodyTypes: [
+            "petite",
+            "thin",
+            "average",
+            "slim",
+            "skinny",
+            "curvaceous",
+            "soft",
+            "chubby",
+            "fit",
+        ],
     },
-    skinTones: ["ivory", "beige", "alabaster", "honey",
-        "carotenoid", "tan", "caramel", "bronze", "mahogany",
-        "chestnut", "buff", "peaches and cream", "umber", "praline",
-        "espresso Brown", "porcelain", "hickory", "mustard", "sable",
-        "almond", "bisque", "teak", "cacao", "pecan", "saddle ", "brown"],
+    skinTones: [
+        "ivory",
+        "beige",
+        "alabaster",
+        "honey",
+        "carotenoid",
+        "tan",
+        "caramel",
+        "bronze",
+        "mahogany",
+        "chestnut",
+        "buff",
+        "peaches and cream",
+        "umber",
+        "praline",
+        "espresso Brown",
+        "porcelain",
+        "hickory",
+        "mustard",
+        "sable",
+        "almond",
+        "bisque",
+        "teak",
+        "cacao",
+        "pecan",
+        "saddle ",
+        "brown",
+    ],
     cupSizes: ["AA", "A", "B", "C", "D", "E", "F", "G", "H"],
     bloodType: ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"],
-}
+};
 
 const hairType = ["straight", "wavy", "curly", "coily"];
-const cut = ["short", "medium", "long"]
-const skinTones = ["ivory", "beige", "alabaster", "honey",
-    "carotenoid", "tan", "caramel", "bronze", "mahogany",
-    "chestnut", "buff", "peaches and cream", "umber", "praline",
-    "espresso Brown", "porcelain", "hickory", "mustard", "sable",
-    "almond", "bisque", "teak", "cacao", "pecan", "saddle ", "brown"]
+const cut = ["short", "medium", "long"];
+const skinTones = [
+    "ivory",
+    "beige",
+    "alabaster",
+    "honey",
+    "carotenoid",
+    "tan",
+    "caramel",
+    "bronze",
+    "mahogany",
+    "chestnut",
+    "buff",
+    "peaches and cream",
+    "umber",
+    "praline",
+    "espresso Brown",
+    "porcelain",
+    "hickory",
+    "mustard",
+    "sable",
+    "almond",
+    "bisque",
+    "teak",
+    "cacao",
+    "pecan",
+    "saddle ",
+    "brown",
+];
 const cupSizes = ["AA", "A", "B", "C", "D", "E", "F", "G", "H"];
 const bloodType = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
 
@@ -59,20 +146,19 @@ const bloodType = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
 var catArrayMain = [];
 var catArrayTrash = [];
 
-
 //catgirl object
 function CatGirl() {
     this.lock = {
-        state: 'UNLOCK',
+        state: "UNLOCK",
         transitions: {
             LOCK: {
                 toggle() {
-                    this.state = 'UNLOCK'
-                }
+                    this.state = "UNLOCK";
+                },
             },
             UNLOCK: {
                 toggle() {
-                    this.state = 'LOCK'
+                    this.state = "LOCK";
                 },
             },
         },
@@ -82,7 +168,7 @@ function CatGirl() {
             if (action) {
                 action.call(this);
             } else {
-                console.log('Invalid action');
+                console.log("Invalid action");
             }
         },
     };
@@ -106,15 +192,15 @@ function CatGirl() {
             hairCut: "",
             hairLength: "",
             earColorMatches: "true",
-            tailColorMatches: "true"
-        }
+            tailColorMatches: "true",
+        },
     };
-    this.basicInfo = {
+    this.catInfo = {
         info: "This Package includes information about the cat parts Info.",
         eyes: {
             eyePupilType: "",
             eyePupilSize: "",
-            eyeColor: ""
+            eyeColor: "",
         },
         ears: {
             earLength: "",
@@ -122,13 +208,13 @@ function CatGirl() {
             earPattern: "",
             earColors: [],
             furLength: "",
-            isFluffy: ""
+            isFluffy: "",
         },
         claws: {
             hasClaws: "false",
             length: "",
             sharpness: "",
-            color: ""
+            color: "",
         },
         tail: {
             tailLength: "",
@@ -136,10 +222,10 @@ function CatGirl() {
             tailPattern: "",
             tailColors: [],
             tailHairLength: "",
-            isFluffy: ""
-        }
+            isFluffy: "",
+        },
     };
-    this.catInfo = {
+    this.miscInfo = {
         info: "This Package includes Misc Info that might not fit anywhere else.",
         bloodType: "",
         starSign: "",
@@ -150,17 +236,16 @@ function CatGirl() {
         },
     };
     this.spiceyInfo = {
-        info: "This Package includes Spicey Info"
+        info: "This Package includes Spicey Info",
     };
 }
-
 
 //global catgirl var
 var VCAT;
 
 //Function Creates catgirl and returns the configured object.
 function makeCat() {
-    VCAT = new CatGirl;
+    VCAT = new CatGirl();
 
     //call each function that configures a Catgirl Package
     VCAT.basicInfo = getBasicInfoPackage();
@@ -172,7 +257,7 @@ function makeCat() {
 
 //Cat Gen Functions
 function generateCats() {
-    var catCount = $('#catCount').val();
+    var catCount = $("#catCount").val();
     var tmpArray = [];
 
     for (let index = 0; index < catCount; index++) {
@@ -182,36 +267,34 @@ function generateCats() {
     catArrayMain = catArrayMain.concat(tmpArray);
 
     exportToCatCard();
-
-};
+}
 
 function addCat() {
     catArrayMain.push(makeCat());
     exportToCatCard();
-};
+}
 
 function removeCat(button_id) {
-    if (button_id == 'endOfArrayRemove') {
-        if (catArrayMain[catArrayMain.length - 1].lock.state == 'UNLOCK') {
+    if (button_id == "endOfArrayRemove") {
+        if (catArrayMain[catArrayMain.length - 1].lock.state == "UNLOCK") {
             catArrayMain.splice(catArrayMain.length - 1, 1);
             exportToCatCard();
         }
     } else {
         //if the id is not 'endOfArrayRemove' then it should be the index of the card from the card remove button
-        if (catArrayMain[button_id].lock.state == 'UNLOCK') {
+        if (catArrayMain[button_id].lock.state == "UNLOCK") {
             catArrayMain.splice(button_id, 1);
             exportToCatCard();
         }
     }
-
-};
+}
 
 function rerollCats() {
     var tmpArray = [];
     var rem = 0;
 
-    catArrayMain.forEach(element => {
-        if (element.lock.state == 'LOCK') {
+    catArrayMain.forEach((element) => {
+        if (element.lock.state == "LOCK") {
             tmpArray.push(element);
         }
     });
@@ -219,7 +302,6 @@ function rerollCats() {
     if (tmpArray.length != catArrayMain.length) {
         rem = catArrayMain.length - tmpArray.length;
         catArrayMain = [];
-
 
         for (let index = 0; index < rem; index++) {
             catArrayMain.push(makeCat());
@@ -229,10 +311,7 @@ function rerollCats() {
 
         exportToCatCard();
     }
-
-
-};
-
+}
 
 //[BASE REQUIRED PACKAGE INFO]
 function getBasicInfoPackage() {
@@ -250,7 +329,7 @@ function getBasicInfoPackage() {
         bodyShape: "",
         eyes: {
             hasCatEyes: "false",
-            eyeColor: ""
+            eyeColor: "",
         },
         hair: {
             hairColor: "",
@@ -258,15 +337,14 @@ function getBasicInfoPackage() {
             hairCut: "",
             hairLength: "",
             earColorMatches: "true",
-            tailColorMatches: "true"
-        }
-    }
-
+            tailColorMatches: "true",
+        },
+    };
 
     //RNG a name
     BIP.name = femaleNames[getIndexFloor(femaleNames.length, 0)];
 
-    //RNG age 
+    //RNG age
     //TODO: implement age range input with. Possible minimum age of 18.
     //Hard coded range of 18-60.
     BIP.age = getIndexFloor(60, 18);
@@ -308,97 +386,114 @@ function getBasicInfoPackage() {
     minHairLength = 0;
     maxHairLength = 260;
     /* 
-    short           -7in -17.78cm
-    Ear             8-9in 20.32-22.86cm
-    Chin            10-11in 25.4-27.94cm
-    Neck            12-13in 30.48-33.02cm
-    Shoulder        14-15in 35.56-38.1cm
-    Armpit          16-17in 40.64-43.18cm
-
-    Armpit          16-19in 40.64-48.26cm
-    Bra-strap       18-19in 45.72-48.26cm
-
-    Mid-back        20-21in 50.8-53.34cm
-    Waist           22-25in 55.88-63.5cm
-    Hip             26-28in 66.04-71.12cm
-    Tailbone        33-35in 83.82-88.9cm
-    Classic         36-39in 91.44-99.06cm
-    Mid-Thigh       40-46in 101.6-116.84cm
-    Knee            47-53in 119.38-134.62cm
-    Calf            54-64in 137.16-162.56cm
-    Ankle           65-69in 165.1-175.26cm
-    Floor           +70in +177.8cm
-    */
+        short           -7in -17.78cm
+        Ear             8-9in 20.32-22.86cm
+        Chin            10-11in 25.4-27.94cm
+        Neck            12-13in 30.48-33.02cm
+        Shoulder        14-15in 35.56-38.1cm
+        Armpit          16-17in 40.64-43.18cm
+    
+        Armpit          16-19in 40.64-48.26cm
+        Bra-strap       18-19in 45.72-48.26cm
+    
+        Mid-back        20-21in 50.8-53.34cm
+        Waist           22-25in 55.88-63.5cm
+        Hip             26-28in 66.04-71.12cm
+        Tailbone        33-35in 83.82-88.9cm
+        Classic         36-39in 91.44-99.06cm
+        Mid-Thigh       40-46in 101.6-116.84cm
+        Knee            47-53in 119.38-134.62cm
+        Calf            54-64in 137.16-162.56cm
+        Ankle           65-69in 165.1-175.26cm
+        Floor           +70in +177.8cm
+        */
 
     //hardcoded to be 0-260cm
     let hairLength = getIndexFloat(300, 0).toFixed(2);
     BIP.hair.hairLength = hairLength;
     let hairColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
     BIP.hair.hairColor = hairColor;
-    let haitCut = ["short", "ear", "chin", "neck", "shoulder", "armpit", "mid-back", "waist", "hip", "tailbone", "classic", "mid-thigh", "knee", "calf", "ankle", "floor"];
+    let haitCut = [
+        "short",
+        "ear",
+        "chin",
+        "neck",
+        "shoulder",
+        "armpit",
+        "mid-back",
+        "waist",
+        "hip",
+        "tailbone",
+        "classic",
+        "mid-thigh",
+        "knee",
+        "calf",
+        "ankle",
+        "floor",
+    ];
 
     switch (true) {
-        case (hairLength < 17.78):
+        case hairLength < 17.78:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[0];
             break;
-        case (hairLength < 23.86):
+        case hairLength < 23.86:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[1];
             break;
-        case (hairLength < 30.48):
+        case hairLength < 30.48:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[2];
             break;
-        case (hairLength < 35.56):
+        case hairLength < 35.56:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[3];
             break;
-        case (hairLength < 40.64):
+        case hairLength < 40.64:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[4];
             break;
-        case (hairLength < 50.8):
+        case hairLength < 50.8:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[5];
             break;
-        case (hairLength < 55.88):
+        case hairLength < 55.88:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[6];
             break;
-        case (hairLength < 66.04):
+        case hairLength < 66.04:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[7];
             break;
-        case (hairLength < 83.82):
+        case hairLength < 83.82:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[8];
             break;
-        case (hairLength < 91.44):
+        case hairLength < 91.44:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[9];
             break;
-        case (hairLength < 101.6):
+        case hairLength < 101.6:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[10];
             break;
-        case (hairLength < 119.38):
+        case hairLength < 119.38:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[11];
             break;
-        case (hairLength < 137.16):
+        case hairLength < 137.16:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[12];
             break;
-        case (hairLength < 165.1):
+        case hairLength < 165.1:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[13];
             break;
-        case (hairLength < 177.8):
+        case hairLength < 177.8:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[14];
             break;
-        case (177.8 < hairLength):
+        case 177.8 < hairLength:
             BIP.hair.hairType = hairType[getIndexFloor(hairType.length, 0)];
             BIP.hair.hairCut = haitCut[15];
             break;
@@ -407,10 +502,31 @@ function getBasicInfoPackage() {
     }
 
     //Body RNG.
-    let bodyShapes = ["triangle", "inverted-triangle", "pear", "spoon", "hourglass", "top-hourglass", "bottom-hourglass", "round", "oval", "diamond"];
+    let bodyShapes = [
+        "triangle",
+        "inverted-triangle",
+        "pear",
+        "spoon",
+        "hourglass",
+        "top-hourglass",
+        "bottom-hourglass",
+        "round",
+        "oval",
+        "diamond",
+    ];
     BIP.bodyShape = bodyShapes[getIndexFloor(bodyShapes.length, 0)];
 
-    let bodyTypes = ["petite", "thin", "average", "slim", "skinny", "curvaceous", "soft", "chubby", "fit"];
+    let bodyTypes = [
+        "petite",
+        "thin",
+        "average",
+        "slim",
+        "skinny",
+        "curvaceous",
+        "soft",
+        "chubby",
+        "fit",
+    ];
     BIP.bodyType = bodyTypes[getIndexFloor(bodyTypes.length, 0)];
 
     return BIP;
@@ -423,7 +539,7 @@ function getCatInfoPackage(catClaws) {
         eyes: {
             eyePupilType: "",
             eyePupilSize: "",
-            eyeColor: ""
+            eyeColor: "",
         },
         ears: {
             earLength: "",
@@ -431,7 +547,7 @@ function getCatInfoPackage(catClaws) {
             earPattern: "",
             earColors: [],
             furLength: "",
-            isFluffy: ""
+            isFluffy: "",
         },
         tail: {
             tailLength: "",
@@ -439,15 +555,15 @@ function getCatInfoPackage(catClaws) {
             tailPattern: "",
             tailColors: [],
             tailHairLength: "",
-            isFluffy: ""
+            isFluffy: "",
         },
         claws: {
             hasClaws: "",
             length: "",
             sharpness: "",
-            color: ""
-        }
-    }
+            color: "",
+        },
+    };
 
     //Cat Eyes
     let eyePupilType = ["circle", "oval", "slit"];
@@ -472,8 +588,10 @@ function getCatInfoPackage(catClaws) {
 
     //Generate the Look of the CatGirl's cat eye if catEye is true.
     if (VCAT.basicInfo.eyes.hasCatEyes) {
-        CIP.eyes.eyePupilType = eyePupilType[getIndexFloor(eyePupilType.length, null)];
-        CIP.eyes.eyePupilSize = eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
+        CIP.eyes.eyePupilType =
+            eyePupilType[getIndexFloor(eyePupilType.length, null)];
+        CIP.eyes.eyePupilSize =
+            eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
     }
     CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
 
@@ -483,7 +601,8 @@ function getCatInfoPackage(catClaws) {
     if (hasClaws) {
         CIP.claws.hasClaws = true;
         CIP.claws.length = clasLength[getIndexFloor(clasLength.length, null)];
-        CIP.claws.sharpness = clawSharpness[getIndexFloor(clawSharpness.length, null)];
+        CIP.claws.sharpness =
+            clawSharpness[getIndexFloor(clawSharpness.length, null)];
         CIP.claws.color = clawColor[getIndexFloor(clawColor.length, null)];
     } else {
         CIP.claws.hasClaws = false;
@@ -512,10 +631,8 @@ function getCatInfoPackage(catClaws) {
     CIP.tail.tailPattern = tailPattern[getIndexFloor(earPattern.length, 0)];
     CIP.tail.tailColors = [];
 
-
     return CIP;
 }
-
 
 //[MISC INFO NOT REQUIRED]
 function getMiscInfoPackage() {
@@ -527,8 +644,8 @@ function getMiscInfoPackage() {
             traitPositive: "",
             traitNeutral: "",
             traitNegative: "",
-        }
-    }
+        },
+    };
 
     //RNG BloodType
     MIP.bloodType = bloodType[getIndexFloor(bloodType.length, 0)];
@@ -547,7 +664,6 @@ function getMiscInfoPackage() {
             }
             break;
         case 2:
-
             day = getIndexFloor(1, 29);
             if (day >= 19) {
                 MIP.starSign = "Pisces";
@@ -639,19 +755,25 @@ function getMiscInfoPackage() {
             break;
     }
 
-
     //RNG Personality Traits
-    MIP.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 0)];
-    MIP.traits.traitNeutral = negativePersonalityTraits[getIndexFloor(negativePersonalityTraits.length, 0)];
-    MIP.traits.traitNegative = neutralPersonalityTraits[getIndexFloor(neutralPersonalityTraits.length, 0)];
+    MIP.traits.traitPositive =
+        positivePersonalityTraits[
+        getIndexFloor(positivePersonalityTraits.length, 0)
+        ];
+    MIP.traits.traitNeutral =
+        negativePersonalityTraits[
+        getIndexFloor(negativePersonalityTraits.length, 0)
+        ];
+    MIP.traits.traitNegative =
+        neutralPersonalityTraits[getIndexFloor(neutralPersonalityTraits.length, 0)];
 
     return MIP;
 }
 
 function getSpiceyInfoPackage() {
     let SIP = {
-        info: "This Package includes Spicey Info"
-    }
+        info: "This Package includes Spicey Info",
+    };
 
     return SIP;
 }
@@ -659,10 +781,9 @@ function getSpiceyInfoPackage() {
 //HTML FUNCTIONS
 //Creates a cat girl then exports it to a new html card
 function exportToCatCard() {
-
     //Gets the card template
-    var wrapper = $('.catcard-container');
-    var container = $('#CatCardTemplate').clone();
+    var wrapper = $(".catcard-container");
+    var container = $("#CatCardTemplate").clone();
     wrapper.empty();
 
     //Loops through array of catgirls and makes each a seperate card with their info in it.
@@ -671,25 +792,24 @@ function exportToCatCard() {
         var tmpCon = container.clone();
 
         //SetIDs of html elements
-        tmpCon.attr("id", 'catCard' + i);
-        $('.button_removeCat', tmpCon).attr("id", i);
-        $('.button_reload', tmpCon).attr("id", i);
-        $('.button_lock', tmpCon).attr("id", i);
-        $('.button_json', tmpCon).attr("id", i);
-
+        tmpCon.attr("id", "catCard" + i);
+        $(".button_removeCat", tmpCon).attr("id", i);
+        $(".button_reload", tmpCon).attr("id", i);
+        $(".button_lock", tmpCon).attr("id", i);
+        $(".button_json", tmpCon).attr("id", i);
 
         //unhide the card.
         tmpCon.css("display", "block");
 
         //check if catgirl object is locked or not before setting the html lock buttons svg
-        //currently all cards are reloaded when I new one is added. 
+        //currently all cards are reloaded when I new one is added.
         //TODO: only append cards instead of remaking them all
-        if (catArrayMain[i].lock.state == 'UNLOCK') {
-            $('.icon-unlocked', tmpCon).css('display', 'block');
-            $('.icon-locked', tmpCon).css('display', 'none');
+        if (catArrayMain[i].lock.state == "UNLOCK") {
+            $(".icon-unlocked", tmpCon).css("display", "block");
+            $(".icon-locked", tmpCon).css("display", "none");
         } else {
-            $('.icon-unlocked', tmpCon).css('display', 'none');
-            $('.icon-locked', tmpCon).css('display', 'block');
+            $(".icon-unlocked", tmpCon).css("display", "none");
+            $(".icon-locked", tmpCon).css("display", "block");
         }
 
         //Call export info function
@@ -715,68 +835,94 @@ function exportInfo(index, clone) {
     var container = clone;
 
     //basicINFO
-    $('.name', container).text(catArrayMain[index].basicInfo.name);
-    $('.age', container).text(catArrayMain[index].basicInfo.age);
-    $('.hieght', container).text(catArrayMain[index].basicInfo.hieght + " cm");
-    $('.wieght', container).text(catArrayMain[index].basicInfo.wieght + " kg");
-    $('.skinTone', container).text(catArrayMain[index].basicInfo.skinTone);
-    $('.cupSize', container).text(catArrayMain[index].basicInfo.cupSize);
-    $('.bodyShape', container).text(catArrayMain[index].basicInfo.bodyShape);
-    $('.bodyType', container).text(catArrayMain[index].basicInfo.bodyType);
+    $(".name", container).text(catArrayMain[index].basicInfo.name);
+    $(".age", container).text(catArrayMain[index].basicInfo.age);
+    $(".hieght", container).text(catArrayMain[index].basicInfo.hieght + " cm");
+    $(".wieght", container).text(catArrayMain[index].basicInfo.wieght + " kg");
+    $(".skinTone", container).text(catArrayMain[index].basicInfo.skinTone);
+    $(".cupSize", container).text(catArrayMain[index].basicInfo.cupSize);
+    $(".bodyShape", container).text(catArrayMain[index].basicInfo.bodyShape);
+    $(".bodyType", container).text(catArrayMain[index].basicInfo.bodyType);
 
-    $('.hasCatEyes', container).text(catArrayMain[index].basicInfo.eyes.hasCatEyes);
-    $('.eyeColor', container).text(catArrayMain[index].basicInfo.eyes.eyeColor);
-    $('.eyeColorExample', container).css('background-color', catArrayMain[index].basicInfo.eyes.eyeColor);
+    $(".hasCatEyes", container).text(
+        catArrayMain[index].basicInfo.eyes.hasCatEyes
+    );
+    $(".eyeColor", container).text(catArrayMain[index].basicInfo.eyes.eyeColor);
+    $(".eyeColorExample", container).css(
+        "background-color",
+        catArrayMain[index].basicInfo.eyes.eyeColor
+    );
 
-    $('.hairColor', container).text(catArrayMain[index].basicInfo.hair.hairColor);
-    $('.hairColorExample', container).css('background-color', catArrayMain[index].basicInfo.hair.hairColor);
-    $('.hairType', container).text(catArrayMain[index].basicInfo.hair.hairType);
-    $('.hairCut', container).text(catArrayMain[index].basicInfo.hair.hairCut);
-    $('.hairLength', container).text(catArrayMain[index].basicInfo.hair.hairLength);
-    $('.earColorMatches', container).text(catArrayMain[index].basicInfo.hair.earColorMatches);
-    $('.tailColorMatches', container).text(catArrayMain[index].basicInfo.hair.tailColorMatches);
+    $(".hairColor", container).text(catArrayMain[index].basicInfo.hair.hairColor);
+    $(".hairColorExample", container).css(
+        "background-color",
+        catArrayMain[index].basicInfo.hair.hairColor
+    );
+    $(".hairType", container).text(catArrayMain[index].basicInfo.hair.hairType);
+    $(".hairCut", container).text(catArrayMain[index].basicInfo.hair.hairCut);
+    $(".hairLength", container).text(
+        catArrayMain[index].basicInfo.hair.hairLength
+    );
+    $(".earColorMatches", container).text(
+        catArrayMain[index].basicInfo.hair.earColorMatches
+    );
+    $(".tailColorMatches", container).text(
+        catArrayMain[index].basicInfo.hair.tailColorMatches
+    );
 
     //catINFO
-    $('.eyePupilType', container).text(catArrayMain[index].catInfo.eyes.eyePupilType);
-    $('.eyePupilSize', container).text(catArrayMain[index].catInfo.eyes.eyePupilSize);
-    $('.eyeColor', container).text(catArrayMain[index].catInfo.eyes.eyeColor);
+    $(".eyePupilType", container).text(
+        catArrayMain[index].catInfo.eyes.eyePupilType
+    );
+    $(".eyePupilSize", container).text(
+        catArrayMain[index].catInfo.eyes.eyePupilSize
+    );
+    $(".eyeColor", container).text(catArrayMain[index].catInfo.eyes.eyeColor);
 
-    $('.earLength', container).text(catArrayMain[index].catInfo.ears.earLength);
-    $('.earSize', container).text(catArrayMain[index].catInfo.ears.earSize);
-    $('.earPattern', container).text(catArrayMain[index].catInfo.ears.earPattern);
-    $('.earColors', container).text(catArrayMain[index].catInfo.ears.earColors);
-    $('.furLength', container).text(catArrayMain[index].catInfo.ears.furLength);
-    $('.isFluffy', container).text(catArrayMain[index].catInfo.ears.isFluffy);
+    $(".earLength", container).text(catArrayMain[index].catInfo.ears.earLength);
+    $(".earSize", container).text(catArrayMain[index].catInfo.ears.earSize);
+    $(".earPattern", container).text(catArrayMain[index].catInfo.ears.earPattern);
+    $(".earColors", container).text(catArrayMain[index].catInfo.ears.earColors);
+    $(".furLength", container).text(catArrayMain[index].catInfo.ears.furLength);
+    $(".isFluffy", container).text(catArrayMain[index].catInfo.ears.isFluffy);
 
-    $('.hasClaws', container).text(catArrayMain[index].catInfo.claws.hasClaws);
-    $('.length', container).text(catArrayMain[index].catInfo.claws.length);
-    $('.sharpness', container).text(catArrayMain[index].catInfo.claws.sharpness);
-    $('.color', container).text(catArrayMain[index].catInfo.claws.color);
+    $(".hasClaws", container).text(catArrayMain[index].catInfo.claws.hasClaws);
+    $(".length", container).text(catArrayMain[index].catInfo.claws.length);
+    $(".sharpness", container).text(catArrayMain[index].catInfo.claws.sharpness);
+    $(".color", container).text(catArrayMain[index].catInfo.claws.color);
 
-    $('.tailLength', container).text(catArrayMain[index].catInfo.tail.tailLength);
-    $('.tailSize', container).text(catArrayMain[index].catInfo.tail.tailSize);
-    $('.tailPattern', container).text(catArrayMain[index].catInfo.tail.tailPattern);
-    $('.tailColors', container).text(catArrayMain[index].catInfo.tail.tailColors);
-    $('.tailHairLength', container).text(catArrayMain[index].catInfo.tail.tailHairLength);
-    $('.isFluffy', container).text(catArrayMain[index].catInfo.tail.isFluffy);
+    $(".tailLength", container).text(catArrayMain[index].catInfo.tail.tailLength);
+    $(".tailSize", container).text(catArrayMain[index].catInfo.tail.tailSize);
+    $(".tailPattern", container).text(
+        catArrayMain[index].catInfo.tail.tailPattern
+    );
+    $(".tailColors", container).text(catArrayMain[index].catInfo.tail.tailColors);
+    $(".tailHairLength", container).text(
+        catArrayMain[index].catInfo.tail.tailHairLength
+    );
+    $(".isFluffy", container).text(catArrayMain[index].catInfo.tail.isFluffy);
 
     //miscINFO
-    $('.bloodType', container).text(catArrayMain[index].miscInfo.bloodType);
-    $('.starSign', container).text(catArrayMain[index].miscInfo.starSign);
+    $(".bloodType", container).text(catArrayMain[index].miscInfo.bloodType);
+    $(".starSign", container).text(catArrayMain[index].miscInfo.starSign);
 
-    $('.traitPositive', container).text(catArrayMain[index].miscInfo.traits.traitPositive);
-    $('.traitNeutral', container).text(catArrayMain[index].miscInfo.traits.traitNeutral);
-    $('.traitNegative', container).text(catArrayMain[index].miscInfo.traits.traitNegative);
+    $(".traitPositive", container).text(
+        catArrayMain[index].miscInfo.traits.traitPositive
+    );
+    $(".traitNeutral", container).text(
+        catArrayMain[index].miscInfo.traits.traitNeutral
+    );
+    $(".traitNegative", container).text(
+        catArrayMain[index].miscInfo.traits.traitNegative
+    );
 
     //spicyINFO
 
     return container;
 }
 
-
-
 function rerollCat(button_id) {
-    if (catArrayMain[button_id].lock.state == 'UNLOCK') {
+    if (catArrayMain[button_id].lock.state == "UNLOCK") {
         var newCat = makeCat();
         catArrayMain[button_id] = newCat;
         exportCatToHTMLCard(button_id);
@@ -784,19 +930,18 @@ function rerollCat(button_id) {
 }
 
 function lockToggle(button) {
-    catArrayMain[button.id].lock.dispatch('toggle');
+    catArrayMain[button.id].lock.dispatch("toggle");
 
-    var wrapper = $('#catCard' + button.id);
-    var container = $('.button_lock', wrapper);
+    var wrapper = $("#catCard" + button.id);
+    var container = $(".button_lock", wrapper);
 
-    if (catArrayMain[button.id].lock.state == 'UNLOCK') {
-        $('.icon-unlocked', container).css('display', 'block');
-        $('.icon-locked', container).css('display', 'none');
+    if (catArrayMain[button.id].lock.state == "UNLOCK") {
+        $(".icon-unlocked", container).css("display", "block");
+        $(".icon-locked", container).css("display", "none");
     } else {
-        $('.icon-unlocked', container).css('display', 'none');
-        $('.icon-locked', container).css('display', 'block');
+        $(".icon-unlocked", container).css("display", "none");
+        $(".icon-locked", container).css("display", "block");
     }
-
 }
 
 //RNG functions
@@ -832,8 +977,12 @@ function download(content, fileName, contentType) {
 }
 
 function onDownload(button_id) {
-    download(JSON.stringify(catArrayMain[button_id], null, 2), "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json", "text/plain");
-};
+    download(
+        JSON.stringify(catArrayMain[button_id], null, 2),
+        "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json",
+        "text/plain"
+    );
+}
 
 /* function doThing() {
     const newCat = makeCat();
@@ -844,25 +993,23 @@ function onDownload(button_id) {
     mainContainer.appendChild(div);
 } */
 
-
 function tem() {
-    this.index = 0
-    this.name ="ITEM",
-    this.weight= 0
-};
+    this.index = 0;
+    (this.name = "ITEM"), (this.weight = 0);
+}
 
 var opt = [];
-var item1 = new tem
+var item1 = new tem();
 item1.name = "Booba";
 item1.weight = 5;
 opt[0] = item1;
 
-var item2 = new tem
+var item2 = new tem();
 item2.name = "Tea";
 item2.weight = 5;
 opt[1] = item2;
 
-console.log("===========")
+console.log("===========");
 /* for (let index = 2; index < 5; index++) {
     var temp = new tem;
     temp.weight = getIndexFloor(10,1);
@@ -870,65 +1017,151 @@ console.log("===========")
     opt[index] = temp;
 } */
 
-function Eyes(){
-    this.eyeConditions={
-        noCondition: true,
-        heterochromia: false,
-        blind: false,
-    }
-    this.leftEye={
-        iris:{
-            color: '',
-            section:{
-                center:{
-                    top:{
+const patchLocation = [
+    "topCenter",
+    "bottomCenter",
+    "leftTop",
+    "leftMiddle",
+    "leftBottom",
+    "rightTop",
+    "rightMiddle",
+    "rightBottom",
+];
 
-                    },
-                    bottom:{
-
-                    },
-                },
-                left:{
-                    top:{
-
-                    },
-                    middle:{
-
-                    },
-                    bottom:{
-
-                    },
-                },
-                right:{
-                    top:{
-
-                    },
-                    middle:{
-
-                    },
-                    bottom:{
-
-                    },
-                },
-            }
-        }
+const eyeConditions = [
+    {
+        name: "heterochromia",
+        weight: 0.6,
     },
-    this.rightEye={
+    {
+        name: "normal",
+        weight: 99.4,
+    },
+];
 
-    }
+//Cat Eyes
+let eyePupilType = ["circle", "oval", "slit"];
+let eyePupilSize = ["wide", "thin", "small", "average", "big"];
+//Generate the Look of the CatGirl's cat eye if catEye is true.
+if (VCAT.basicInfo.eyes.hasCatEyes) {
+    CIP.eyes.eyePupilType =
+        eyePupilType[getIndexFloor(eyePupilType.length, null)];
+    CIP.eyes.eyePupilSize =
+        eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
+}
+CIP.eyes.eyeColor = VCAT.basicInfo.eyes.eyeColor;
+
+function Eyes() {
+    this.naturalColor = "";
+    this.catEyes = false;
+    this.eyeConditions = {
+        noCondition: false,
+        heterochromia: {
+            hasCondition: true,
+            type: "",
+        },
+        blind: false,
+    };
+
+    this.leftEye = {
+        pupilType: "",
+        pupilSize: "",
+        iris: {
+            color: "",
+            section: {
+                topCenter: {
+                    color: "",
+                },
+                leftTop: {
+                    color: "",
+                },
+                leftMiddle: {
+                    color: "",
+                },
+                leftBottom: {
+                    color: "",
+                },
+                rightTop: {
+                    color: "",
+                },
+                rightMiddle: {
+                    color: "",
+                },
+                rightBottom: {
+                    color: "",
+                },
+            },
+        },
+    };
+    this.rightEye = {
+        pupilType: "",
+        pupilSize: "",
+        iris: {
+            color: "",
+            section: {
+                topCenter: {
+                    color: "",
+                },
+                leftTop: {
+                    color: "",
+                },
+                leftMiddle: {
+                    color: "",
+                },
+                leftBottom: {
+                    color: "",
+                },
+                rightTop: {
+                    color: "",
+                },
+                rightMiddle: {
+                    color: "",
+                },
+                rightBottom: {
+                    color: "",
+                },
+            },
+        },
+    };
+
+    this.init = function () {
+        this.catEyes = coinFlip();
+        this.naturalColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+        var tempEye = weighted_random(eyeConditions);
+        switch (tempEye.name) {
+            case "normal":
+                this.eyeConditions.noCondition = true;
+                break;
+            case "heterochromia":
+                this.eyeConditions.heterochromia.hasCondition = true;
+                break;
+
+            default:
+                this.eyeConditions.noCondition = true;
+                break;
+        }
+
+        if (catEyes) {
+            var pupilType = eyePupilType[getIndexFloor(eyePupilType.length, null)];
+            var pupilSize = eyePupilSize[getIndexFloor(eyePupilSize.length, null)];
+
+            this.leftEye.pupilType = pupilType;
+            this.leftRight.pupilType = pupilType;
+
+            this.leftEye.pupilSize = pupilSize;
+            this.leftRight.pupilSize = pupilSize;
+        }
+        if (this.eyeConditions.heterochromia.hasCondition) {
+            
+        }
+    };
+
+
+    this.init();
 }
 
-console.log(opt)
-for(var item in opt){
-    console.log(opt[item].name + ": " + opt[item].weight);
-}
-
-console.log("===========")
-
-for (let index = 0; index < 10; index++) {
-    var temp = weighted_random(opt);
-    console.log("Pull" + index + ": " + temp.name +": "+ temp.weight);
-}
+var x = new Eyes();
 
 function weighted_random(options) {
     var i;
@@ -937,27 +1170,16 @@ function weighted_random(options) {
 
     for (i = 0; i < options.length; i++)
         weights[i] = options[i].weight + (weights[i - 1] || 0);
-    
-    var random = Math.random() * weights[weights.length - 1];
-    
-    for (i = 0; i < weights.length; i++)
-        if (weights[i] > random)
-            break;
-    return options[i];
-};
 
-const eyeConditions = [
-    {
-        name: "heterochromia",
-        weight: .6
-    },
-    {
-        name: "normal",
-        weight: 99.4
-    }
-];
+    var random = Math.random() * weights[weights.length - 1];
+
+    for (i = 0; i < weights.length; i++) if (weights[i] > random) break;
+    return options[i];
+}
+
+
 
 for (let index = 0; index < 50; index++) {
     var temp = weighted_random(eyeConditions);
-    console.log("Pull" + index + ": " + temp.name +": "+ temp.weight);
+    console.log("Pull" + index + ": " + temp.name + ": " + temp.weight);
 }
