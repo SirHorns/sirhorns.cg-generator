@@ -1,11 +1,9 @@
 //VARIABLES
-//catgirlArrays
-var catArrayMain = [];
-var catArrayTrash = [];
+var VCAT;
 
 //Function Creates catgirl and returns the configured object.
 function makeCat() {
-    var VCAT = new Catgirl();
+    VCAT = new Catgirl();
     return VCAT;
 }
 function rerollCat() {
@@ -22,6 +20,7 @@ function exportToCatCard() {
     var wrapper = $(".catcard-container");
     var container = $("#CatCardTemplate").clone();
     wrapper.empty();
+    
 
     //Loops through array of catgirls and makes each a seperate card with their info in it.
     for (var i in catArrayMain) {
@@ -72,6 +71,8 @@ function exportInfo(cat) {
     var wrapper = $(".catcard-container");
     var container = $("#CatCardTemplate");
     wrapper.empty();
+    container.id = "NewCatCard";
+    container.css("display", "block");
 
     $(".name", container).text(cat.name);
     $(".age", container).text(cat.age);
@@ -91,8 +92,7 @@ function exportInfo(cat) {
         $(".eyeNormal", container).css('display', 'block');
         $(".heterochromia", container).css('display', 'none');
 
-        $(".eyeColor", container).text(cat.eyes.naturalColor);
-        $(".eyeColorExample", container).css("background-color", cat.eyes.naturalColor);
+        $(".eyeColor", container).text(cat.eyes.naturalColor).css("background-color", cat.eyes.naturalColor);
 
     } else {
         $(".eyeNormal", container).css('display', 'none');
@@ -104,44 +104,31 @@ function exportInfo(cat) {
 
             //Central
             if (cat.eyes.eyeConditions.heterochromia.type == "central") {
-                console.log("Inside Central: " + cat.eyes.eyeConditions.heterochromia.type);
                 heterochromiaDivSwitch('block', 'none', 'none');
 
-                $(".eyeColor", container).text(cat.eyes.naturalColor);
-                $(".eyeColorExample", container).css("background-color", cat.eyes.naturalColor);
+                $(".eyeColor", container).text(cat.eyes.naturalColor).css("background-color", cat.eyes.naturalColor);
 
-                $(".eyeRing", container).text(cat.eyes.ringColor);
-                $(".eyeRingColorExample", container).css("background-color", cat.eyes.ringColor);
+                $(".eyeRing", container).text(cat.eyes.ringColor).css("background-color", cat.eyes.ringColor);
 
+                $(".eyeRight", container).text(cat.eyes.right.color).css("background-color", cat.eyes.right.color);
 
+                $(".eyeLeftIrisRing", container).text(cat.eyes.left.iris.ringColor).css("background-color", cat.eyes.left.iris.ringColor);
 
-
-
-                $(".eyeRight", container).text(cat.eyes.right.color);
-                $(".eyeRightColorExample", container).css("background-color", cat.eyes.right.color);
-
-                $(".eyeLeftIrisRing", container).text(cat.eyes.left.iris.ringColor);
-                $(".eyeLeftIrisRingColorExample", container).css("background-color", cat.eyes.left.iris.ringColor);
-
-                $(".eyeRightIrisRing", container).text(cat.eyes.right.iris.ringColor);
-                $(".eyeRightIrisRingColorExample", container).css("background-color", cat.eyes.right.iris.ringColor);
+                $(".eyeRightIrisRing", container).text(cat.eyes.right.iris.ringColor).css("background-color", cat.eyes.right.iris.ringColor);
             }
             //Complete
             else if (cat.eyes.eyeConditions.heterochromia.type == "complete") {
-                console.log("Inside Complete: " + cat.eyes.eyeConditions.heterochromia.type);
                 heterochromiaDivSwitch('none', 'block', 'none');
 
-                $(".eyeLeft", container).text(cat.eyes.left.color);
-                $(".eyeLeftColorExample", container).css("background-color", cat.eyes.left.color);
+                $(".eyeLeft", container).text(cat.eyes.left.color).css("background-color", cat.eyes.left.color);
 
-                $(".eyeRight", container).text(cat.eyes.right.color);
-                $(".eyeRightColorExample", container).css("background-color", cat.eyes.right.color);
+                $(".eyeRight", container).text(cat.eyes.right.color).css("background-color", cat.eyes.right.color);
             }
             //Sectoral
             else if (cat.eyes.eyeConditions.heterochromia.type == "sectoral") {
                 heterochromiaDivSwitch('none', 'none', 'block');
 
-                console.log("Inside Sectoral: " + cat.eyes.eyeConditions.heterochromia.type);
+                console.warn("Sectoral Display and relating code not finished yet.");
             };
 
             function heterochromiaDivSwitch(central, complete, sectoral) {
@@ -171,89 +158,50 @@ function exportInfo(cat) {
     }
 
 
-    /*
-      $(".hairColor", container).text(cat.hair.hairColor);
-      $(".hairColorExample", container).css("background-color",cat.hair.hairColor);
-      $(".hairType", container).text(cat.hair.hairType);
-      $(".hairCut", container).text(cat.hair.hairCut);
-      $(".hairLength", container).text(cat.hair.hairLength);
+    
+      $(".hairColor", container).text(cat.hair.color).css("background-color",cat.hair.color);
+      $(".hairType", container).text(cat.hair.type);
+      $(".hairCut", container).text(cat.hair.cut);
+      $(".hairLength", container).text(cat.hair.length);
+
+      $(".earLength", container).text(cat.ears.length);
+      $(".earSize", container).text(cat.ears.size);
+      $(".earPattern", container).text(cat.ears.patterns);
+      $(".earColor", container).text(cat.ears.color);
+
+     
+      $(".tailLength", container).text(cat.tail.length);
+      $(".tailSize", container).text(cat.tail.size);
+      $(".tailPattern", container).text(cat.tail.pattern);
+      $(".tailColors", container).text(cat.tail.color);
+      $(".tailHairLength", container).text(cat.tail.tailHairLength);
+    
+      $(".bloodType", container).text(cat.bloodType);
+      $(".starSign", container).text(cat.starSign);
+
+    /*  
       $(".earColorMatches", container).text(cat.hair.earColorMatches);
       $(".tailColorMatches", container).text(cat.hair.tailColorMatches);
     
-      $(".eyePupilType", container).text(catArrayMain[index].catInfo.eyes.eyePupilType);
-      $(".eyePupilSize", container).text(catArrayMain[index].catInfo.eyes.eyePupilSize);
-      $(".eyeColor", container).text(catArrayMain[index].catInfo.eyes.eyeColor);
+      $(".eyePupilType", container).text(cat.eyes.eyePupilType);
+      $(".eyePupilSize", container).text(cat.eyes.eyePupilSize);
+      $(".eyeColor", container).text(cat.eyes.eyeColor);
     
-      $(".earLength", container).text(catArrayMain[index].catInfo.ears.earLength);
-      $(".earSize", container).text(catArrayMain[index].catInfo.ears.earSize);
-      $(".earPattern", container).text(catArrayMain[index].catInfo.ears.earPattern);
-      $(".earColors", container).text(catArrayMain[index].catInfo.ears.earColors);
-      $(".furLength", container).text(catArrayMain[index].catInfo.ears.furLength);
-      $(".isFluffy", container).text(catArrayMain[index].catInfo.ears.isFluffy);
+      
     
-      $(".hasClaws", container).text(catArrayMain[index].catInfo.claws.hasClaws);
-      $(".length", container).text(catArrayMain[index].catInfo.claws.length);
-      $(".sharpness", container).text(catArrayMain[index].catInfo.claws.sharpness);
-      $(".color", container).text(catArrayMain[index].catInfo.claws.color);
+      $(".hasClaws", container).text(cat.claws.hasClaws);
+      $(".length", container).text(cat.claws.length);
+      $(".sharpness", container).text(cat.claws.sharpness);
+      $(".color", container).text(cat.claws.color);
     
-      $(".tailLength", container).text(catArrayMain[index].catInfo.tail.tailLength);
-      $(".tailSize", container).text(catArrayMain[index].catInfo.tail.tailSize);
-      $(".tailPattern", container).text(catArrayMain[index].catInfo.tail.tailPattern);
-      $(".tailColors", container).text(catArrayMain[index].catInfo.tail.tailColors);
-      $(".tailHairLength", container).text(catArrayMain[index].catInfo.tail.tailHairLength);
-      $(".isFluffy", container).text(catArrayMain[index].catInfo.tail.isFluffy);
+      
     
-      $(".bloodType", container).text(catArrayMain[index].miscInfo.bloodType);
-      $(".starSign", container).text(catArrayMain[index].miscInfo.starSign);
-    
-      $(".traitPositive", container).text(catArrayMain[index].miscInfo.traits.traitPositive);
-      $(".traitNeutral", container).text(catArrayMain[index].miscInfo.traits.traitNeutral);
-      $(".traitNegative", container).text(catArrayMain[index].miscInfo.traits.traitNegative);
+      $(".traitPositive", container).text(cat.miscInfo.traits.traitPositive);
+      $(".traitNeutral", container).text(cat.miscInfo.traits.traitNeutral);
+      $(".traitNegative", container).text(cat.miscInfo.traits.traitNegative);
      */
 
     wrapper.append(container);
-}
-
-function lockToggle(button) {
-    catArrayMain[button.id].lock.dispatch("toggle");
-
-    var wrapper = $("#catCard" + button.id);
-    var container = $(".button_lock", wrapper);
-
-    if (catArrayMain[button.id].lock.state == "UNLOCK") {
-        $(".icon-unlocked", container).css("display", "block");
-        $(".icon-locked", container).css("display", "none");
-    } else {
-        $(".icon-unlocked", container).css("display", "none");
-        $(".icon-locked", container).css("display", "block");
-    }
-}
-
-//RNG functions
-function getIndexFloor(max, min) {
-    if (min == null) {
-        min = 0;
-    }
-    let index = Math.floor(Math.random() * (max - min) + min);
-    return index;
-}
-function getIndexFloat(max, min) {
-    if (min == null) {
-        min = 0;
-    }
-    let index = Math.random() * (max - min) + min;
-    return index;
-}
-function coinFlip() {
-    if (getIndexFloat(2, 0) > 1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-function getHexColor() {
-    var color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-    return color;
 }
 
 //MISC function
@@ -265,14 +213,6 @@ function download(content, fileName, contentType) {
     a.click();
 }
 
-function onDownload(button_id) {
-    download(
-        JSON.stringify(catArrayMain[button_id], null, 2),
-        "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json",
-        "text/plain"
-    );
-}
-
 /* function doThing() {
     const newCat = makeCat();
 
@@ -281,20 +221,3 @@ function onDownload(button_id) {
     div.innerHTML = '<span class="name">' + newCat +'</span>';
     mainContainer.appendChild(div);
 } */
-
-function weighted_random(options) {
-    var weights = [];
-
-    for (var i = 0; i < options.length; i++) {
-        weights[i] = options[i].weight + (weights[i - 1] || 0);
-    }
-
-    var random = Math.random() * weights[weights.length - 1];
-
-    for (i = 0; i < weights.length; i++) {
-        if (weights[i] > random) {
-            break;
-        }
-    }
-    return options[i];
-}

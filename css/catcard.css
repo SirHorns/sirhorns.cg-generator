@@ -16,16 +16,9 @@
 
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
 .catcard{
     height: min-content;
-    width: 1500px;
+    width: auto;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -181,56 +174,8 @@ body{
 }
 
 .description{
-
-}
-
-
-
-.title-container {
-    padding: 0px 0px 0px 0px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-}
-
-.title{
-    margin: 0px 0px 0px 0px;
-}
-
-hr {
-    display: block;
-    unicode-bidi: isolate;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-    overflow: hidden;
-    border-style: inset;
-    border-width: 1px;
-}
-
-.thin-hr {
-    margin-left: 5px;
-    margin-right: 5px;
-    flex: 1 1 0%;
-    border: 0px;
     width: 100%;
-    height: 2px;
-    background: rgb(0, 0, 0);
-}
 
-.thick-hr{
-    flex: 1 1 0%;
-    border: 0px;
-    width: 100%;
-    height: 4px;
-    background: rgb(0, 0, 0);
-}
-
-td{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 .colorExample{
@@ -252,11 +197,20 @@ td{
     display: block;
 }
 
-#heterochromiaCentral #heterochromiaComplete #heterochromiaSectoral {
+#heterochromiaCentral{
+    display: none;
+}
+#heterochromiaComplete{
+    display: none;
+}
+#heterochromiaSectoral {
     display: none;
 }
 
 .keyword{
     color: var(--text-on-primary);
     font-weight: bold;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 1px 0px 1px;
+    border: 1px solid black;
 }

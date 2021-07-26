@@ -156,18 +156,37 @@ function Catgirl() {
             this.pattern - "";
             this.conditions = [];
         };
-        var lengths = ["short", "average", "tall"];
+        var lengths = ["short", "average", "long"];
         var sizes = ["small", "medium", "large"];
         var patterns = ["spotted", "solid", "patched"];
 
         this.hasCatEars = true;
         this.left = new Ear();
         this.right = new Ear();
+        this.length = "normal";
+            this.size = "normal";
+            this.accessoires = [];
+            this.patterns = [];
+            this.conditions = [];
 
         this.init = function () {
-            this.left.length = lengths[getIndexFloor(lengths.length, 0)];
+            var length = lengths[getIndexFloor(lengths.length, 0)];
+            var size = sizes[getIndexFloor(sizes.length, 0)];
+
+            this.length = length;
+            this.size = size;
+
+            this.left.length = length;
+            this.left.size = size;
+            this.right.length = length;
+            this.right.size = size;
+
             this.left.pattern = patterns[getIndexFloor(patterns.length, 0)];
-            this.left.size = sizes[getIndexFloor(sizes.length, 0)];
+            this.right.pattern = patterns[getIndexFloor(patterns.length, 0)];
+
+            this.patterns[0] = this.left.pattern;
+            this.patterns[1] = this.right.pattern;
+            
         };
         this.init();
     }
@@ -403,9 +422,9 @@ function Catgirl() {
         this.init = function () {
             //Generate the Look of the CatGirl's cat tail.
 
-            length = lengths[getIndexFloor(lengths.length, 0)];
-            size = sizes[getIndexFloor(sizes.length, 0)];
-            pattern = patterns[getIndexFloor(patterns.length, 0)];
+            this.length = lengths[getIndexFloor(lengths.length, 0)];
+            this.size = sizes[getIndexFloor(sizes.length, 0)];
+            this.pattern = patterns[getIndexFloor(patterns.length, 0)];
         };
 
         this.init();
@@ -509,9 +528,9 @@ function Catgirl() {
     var bloodTypes = ["O-", "O+", "B-", "B+", "A-", "A+", "AB-", "AB+"];
 
     //HTML Logic
-    this.lock = {
-        state: "UNLOCK",
-        transitions: {
+    function Lock() {
+        this.state= "UNLOCK";
+        this.transitions= {
             LOCK: {
                 toggle() {
                     this.state = "UNLOCK";
@@ -522,8 +541,8 @@ function Catgirl() {
                     this.state = "LOCK";
                 },
             },
-        },
-        dispatch(actionName) {
+        };
+        this.dispatch = function(actionName) {
             const action = this.transitions[this.state][actionName];
 
             if (action) {
@@ -531,9 +550,8 @@ function Catgirl() {
             } else {
                 console.log("Invalid action");
             }
-        },
+        };
     };
-    this.displayed = true;
 
     //Cat Girl Info
     this.name = "Biannca";
@@ -543,9 +561,9 @@ function Catgirl() {
     this.hair = new Hair();
     this.body = new Body();
     this.nails = new Nails();
-    this.tails = new Tail();
+    this.tail = new Tail();
     this.bloodType = "";
-    this.starSign = new StarSign();
+    this.starSign = "Cancer";
     this.traits = {
         traitPositive: "",
         traitNeutral: "",
@@ -563,6 +581,8 @@ function Catgirl() {
         this.age = getIndexFloor(60, 18);
 
         this.bloodType = bloodTypes[getIndexFloor(bloodTypes.length, 0)];
+
+        this.starSign = new StarSign();
 
         this.traits.traitPositive = positivePersonalityTraits[getIndexFloor(positivePersonalityTraits.length, 0)];
         this.traits.traitNeutral = negativePersonalityTraits[getIndexFloor(negativePersonalityTraits.length, 0)];

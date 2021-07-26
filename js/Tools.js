@@ -1,17 +1,3 @@
-sap.ui.define([
-	"./Tools"
-], function () {
-	"use strict";
-
-	// class providing static utility methods.
-
-	return {
-
-             //where is the magic and the magic do stuff
-
-        };
-});
-
 function Tools()
 {
     const self = 
@@ -55,10 +41,44 @@ function download(content, fileName, contentType) {
     a.click();
 }
 
-function onDownload(button_id) {
-    download(
-        JSON.stringify(catArrayMain[button_id], null, 2),
-        "Cat-Girl-" + catArrayMain[button_id].basicInfo.name + ".json",
-        "text/plain"
-    );
+function onDownload() {
+    if (VCAT === undefined) {
+       console.warn("No catgirl created yet.");
+    }else{
+        download(JSON.stringify(VCAT, null, 2),"Cat-Girl-" + VCAT.name + ".json","text/plain"); 
+        
+    }
+    
+}
+
+function lockToggle(button) {
+    catArrayMain[button.id].lock.dispatch("toggle");
+
+    var wrapper = $("#catCard" + button.id);
+    var container = $(".button_lock", wrapper);
+
+    if (catArrayMain[button.id].lock.state == "UNLOCK") {
+        $(".icon-unlocked", container).css("display", "block");
+        $(".icon-locked", container).css("display", "none");
+    } else {
+        $(".icon-unlocked", container).css("display", "none");
+        $(".icon-locked", container).css("display", "block");
+    }
+}
+
+function weighted_random(options) {
+    var weights = [];
+
+    for (var i = 0; i < options.length; i++) {
+        weights[i] = options[i].weight + (weights[i - 1] || 0);
+    }
+
+    var random = Math.random() * weights[weights.length - 1];
+
+    for (i = 0; i < weights.length; i++) {
+        if (weights[i] > random) {
+            break;
+        }
+    }
+    return options[i];
 }

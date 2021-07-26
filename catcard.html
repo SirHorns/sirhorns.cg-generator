@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CatCard</title>
 
-    <link rel="stylesheet" href="css/TestStyle.css">
+    <link rel="stylesheet" href="css/catcard.css">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="catcard-content-wrapper-containers">
-                    <div class="catcard-content-container-wrapper">
+                    <div class="catcard-content-container-wrapper" style="display: none;">
 
                         <div  id="bodyinfo"    class="wrapper">
                             <table>
@@ -261,53 +261,50 @@
                     <div class="catcard-content-container-description">
                         <!--SIMPLE INFO-->
                         <div class="description">
-                            <div>
                                 <span class="name keyword"></span> is a <span class="age keyword"></span> year old catgirl.
-                                <br>
+                                <hr class="break-hr">
                                 <span class="eyeNormal">
-                                    The color of her eyes are <span class="eyeColor keyword eyeColorExample"></span>.
+                                    The color of her eyes are <span class="eyeColor keyword"></span>.
                                </span>
                                <div class="heterochromia">
-                                    <span class="name"></span> has <span class ="heterochromiaType keyword"></span> heterochromia.
+                                    She has <span class="keyword"><span class ="heterochromiaType"></span> heterochromia</span>.
                                     <br>
                                     <span id="heterochromiaCentral">
-                                        The color of her eyes are <span class="catData eyeColor keyword eyeColorExample">#000000</span>.
+                                        Both her eyes are the same color but there is a ring of a different color around her pupils.
                                         <br>
-                                        Each eye as a <span class="catData eyeRing keyword eyeRingColorExample" >#000000</span> colored ring around each pupil.
+                                        The color of her eyes are <span class="catData eyeColor keyword">#000000</span>.
+                                        <br>
+                                        Each eye as a <span class="catData eyeRing keyword" >#000000</span> colored ring around each pupil.
                                     </span>
                                     <span id="heterochromiaComplete">
                                         Both of her eyes are different colors.
                                         <br>
-                                        Her left eye is a <span class="catData eyeLeft eyeLeftColorExample">#000000</span> color.
+                                        Her left eye is a <span class="catData eyeLeft keyword">#000000</span> color.
                                         <br>
-                                        her right eye is a <span class="catData eyeRight eyeRightColorExample">#000000</span> color.
+                                        Her right eye is a <span class="catData eyeRight keyword">#000000</span> color.
                                     </span>
                                     <span id="heterochromiaSectoral">
-                                        Not Done Yeet
+                                        <span class="heterochromia">Not Done Yet.</span>
                                     </span>
                                 </div>
-                                
-                                Her skin has a <span class="skinTone keyword"></span> tone to it.
-                            </div>
-                            <hr class="thin-hr">
+                            <hr class="break-hr">
 
                             <!--PHYSICAL INFO-->
                             <div>
                                 She is <span class="hieght keyword"></span> tall and wieghs <span class="wieght keyword"></span>.
-
                                 <br>
-                                She has a <span class="bodyType keyword"></span> body type.
+                                Her skin has a <span class="skinTone keyword"></span> tone to it.
                                 <br>
-                                She has a <span class="bodyFigure keyword"></span> figure.
+                                She has a <span class="bodyType keyword"></span> body type with a <span class="bodyFigure keyword"></span> figure.
                                 <br>
                                 She has a <span class="cupSize keyword"></span> bust size.
                             </div>
 
-                            <hr class="thin-hr">
+                            <hr class="break-hr">
 
-                            <!--HAIR INFO-->
+                            <!--COSMETIC INFO-->
                             <div>
-                                She has <span class="hairCut keyword"></span> lengthed </span> <span class="hairType keyword"></span>
+                                She has <span class="hairCut keyword"></span> lengthed <span class="hairType keyword"></span>
                                 hair.
                                 <br>
                                 Her hair is <span class="hairLength keyword"></span>cm long.
@@ -316,21 +313,21 @@
                                 <br>
 
                             </div>
-                            <hr class="thin-hr">
+                            <hr class="break-hr">
 
                             <!--CAT EAR INFO-->
                             <div>
-                                <span class="name"></span> has <span class="earSize"></span> sized cat ears.
+                                <span class="name"></span> has <span class="earSize keyword"></span> sized cat ears.
                                 <br>
-                                They have a <span class="earLength"></span> length to them.
+                                They are <span class="earLength keyword"></span> length cat ears.
                             </div>
-                            <hr class="thin-hr">
+                            <hr class="break-hr">
 
                             <!--CAT TAIL INFO-->
                             <div>
-                                <span class="name"></span> has a <span class="tailSize"></span> sized tail.
+                                <span class="name keyword"></span> has a <span class="tailSize keyword"></span> sized tail.
                                 <br>
-                                It's <span class="tailLength"></span> in length.
+                                It's <span class="tailLength keyword"></span> in length.
                             </div>
                         </div>
                     </div>

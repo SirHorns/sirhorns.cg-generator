@@ -8,6 +8,7 @@
     <title>Catgirl Generator</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/catcard.css">
 
     <link rel="icon" href="https://sirhorns.github.io/Data/cgg_icon00.png">
 
@@ -34,6 +35,15 @@
                     Generate Catgirls
                 </button>
 
+                <button id="" class="body-button-catgeneration button_json" onclick="onDownload()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M15 10h4l-7 8-7-8h4v-10h6v10zm3.213-8.246l-1.213 1.599c2.984 1.732 5 4.955 5 
+            8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 
+            2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z" />
+                    </svg>
+                </button>
+
                 <input type="text" id="catCount" style="display: none;" value="">
             </div>
 
@@ -47,7 +57,7 @@
                     </svg>
                 </button>
 
-                <button class="body-button-catgeneration button_adCat" onclick="addCat()">
+                <button class="body-button-catgeneration button_adCat" onclick="generateCat()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 
                     10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 
@@ -65,7 +75,7 @@
                 </button>
             </div>
 
-            <div>
+            <div style="display: none;">
                 <form action="">
                     <table>
                         <tbody>
@@ -143,39 +153,22 @@
     </div>
 
         <!-- Cat Card: here for cloning purposes-->
-        <div id="CatCardTemplate" class="catcard">
-            <div class="catcard-content-container-info">
-                <!--TITLE-->
-                <div class="catcard-title">
-                    <div class="title-container">
-                        <hr class="thin-hr">
-                        <span class="title"><b><span class="name">Biannca</span></b></span>
-                        <hr class="thin-hr">
-                    </div>
+    <div id="CatCardTemplate" class="catcard" style="display: none;">
+        <div class="catcard-content-container-info">
+            <!--TITLE-->
+            <div class="catcard-title">
+                <div class="title-container">
+                    <hr class="thin-hr">
+                    <span class="title"><b><span class="name">Biannca</span></b></span>
+                    <hr class="thin-hr">
                 </div>
-                <div class="catcard-content">
-                    <div class="catcard-content-container-button">
-                        <button id="" class="catcard-button button_reload" onclick="rerollCat(this.id)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M20.944 12.979c-.489 4.509-4.306 8.021-8.944 8.021-2.698 0-5.112-1.194-6.763-3.075l1.245-1.633c1.283 1.645 
-                        3.276 2.708 5.518 2.708 3.526 0 6.444-2.624 6.923-6.021h-2.923l4-5.25 4 5.25h-3.056zm-15.864-1.979c.487-3.387 
-                        3.4-6 6.92-6 2.237 0 4.228 1.059 5.51 2.698l1.244-1.632c-1.65-1.876-4.061-3.066-6.754-3.066-4.632 0-8.443 
-                        3.501-8.941 8h-3.059l4 5.25 4-5.25h-2.92z" />
-                            </svg>
-                        </button>
-    
-                        <button id="" class="catcard-button button_json" onclick="onDownload(this.id)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path
-                                    d="M15 10h4l-7 8-7-8h4v-10h6v10zm3.213-8.246l-1.213 1.599c2.984 1.732 5 4.955 5 
-                    8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 
-                    2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z" />
-                            </svg>
-                        </button>
-                    </div>
-    
-                    <div class="catcard-content-wrapper-containers">
-                        <div class="catcard-content-container-table">
+            </div>
+            <div class="catcard-content">
+
+                <div class="catcard-content-wrapper-containers">
+                    <div class="catcard-content-container-wrapper" style="display: none;">
+
+                        <div  id="bodyinfo"    class="wrapper">
                             <table>
                                 <tbody>
                                     <tr>
@@ -208,7 +201,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-    
+                        </div>
+
+
+                        <div id="eyeinfo" class="wrapper">
                             <table id="eyeNormal" style="display: none;">
                                 <tbody>
                                     <tr>
@@ -218,19 +214,117 @@
                                     </tr>
                                 </tbody>
                             </table>
-    
-                            <table id="heterochromia" style="display: none;">
-                                <tbody>
-                                    <tr>
-                                        <td>Heterochromia</td>
-                                    </tr>
-                                    <tr>
-                                    </tr>
-                                </tbody>
-                            </table>
-    
-    
-    
+
+                            <div id="heterochromia" style="display: none;">
+                                <div class="title-container">
+                                    <hr class="thin-hr">
+                                    <span class="title"><b>Heterochromia</b></span>
+                                    <hr class="thin-hr">
+                                </div>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td><span id="heterochromiaType"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div id="heterochromiaCentral">
+                                    <!-- <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Left Eye:</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Color:</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="catData eyeLeft">#000000</span></td>
+                                            <td class="eyeLeftColorExample colorExample"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ring around Pupil:</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="catData eyeLeftIrisRing">#000000</span></td>
+                                            <td class="eyeLeftIrisRingColorExample colorExample"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Right Eye:</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Color:</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="catData eyeRight">#000000</span></td>
+                                            <td class="eyeRightColorExample colorExample"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ring around Pupil:</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="catData eyeRightIrisRing">#000000</span></td>
+                                            <td class="eyeRightIrisRingColorExample colorExample"></td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Eye Color:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="catData eyeColor">#000000</span></td>
+                                                <td class="eyeColorExample colorExample"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Iris Ring Color:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="catData eyeRing">#000000</span></td>
+                                                <td class="eyeRingColorExample colorExample"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="heterochromiaComplete">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Left Eye:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="catData eyeLeft">#000000</span></td>
+                                                <td class="eyeLeftColorExample colorExample"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Right Eye:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="catData eyeRight">#000000</span></td>
+                                                <td class="eyeRightColorExample colorExample"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="heterochromiaSectoral">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sectoral Not Done</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="" class="wrapper">
                             <table>
                                 <tbody>
                                     <tr>
@@ -277,70 +371,86 @@
     
                                 </tbody>
                             </table>
-    
                         </div>
-    
-                        <div class="catcard-content-container-description">
-                            <!--SIMPLE INFO-->
-                            <div class="description">
-                                <div>
-                                    <span class="name"></span> is a <span class="age"></span> year old catgirl.
+
+                    </div>
+
+                    <div class="catcard-content-container-description">
+                        <!--SIMPLE INFO-->
+                        <div class="description">
+                                <span class="name keyword"></span> is a <span class="age keyword"></span> year old catgirl.
+                                <hr class="break-hr">
+                                <span class="eyeNormal">
+                                    The color of her eyes are <span class="eyeColor keyword"></span>.
+                               </span>
+                               <div class="heterochromia">
+                                    She has <span class="keyword"><span class ="heterochromiaType"></span> heterochromia</span>.
                                     <br>
-                                    The color of her eyes are <span class="eyeColor"></span>.
-                                    <br>
-                                    Her skin has a <span class="skinTone"></span> tone to it.
-    
+                                    <span id="heterochromiaCentral">
+                                        Both her eyes are the same color but there is a ring of a different color around her pupils.
+                                        <br>
+                                        The color of her eyes are <span class="catData eyeColor keyword">#000000</span>.
+                                        <br>
+                                        Each eye as a <span class="catData eyeRing keyword" >#000000</span> colored ring around each pupil.
+                                    </span>
+                                    <span id="heterochromiaComplete">
+                                        Both of her eyes are different colors.
+                                        <br>
+                                        Her left eye is a <span class="catData eyeLeft keyword">#000000</span> color.
+                                        <br>
+                                        Her right eye is a <span class="catData eyeRight keyword">#000000</span> color.
+                                    </span>
+                                    <span id="heterochromiaSectoral">
+                                        <span class="heterochromia">Not Done Yet.</span>
+                                    </span>
                                 </div>
-                                <hr class="thin-hr">
-    
-                                <!--PHYSICAL INFO-->
-                                <div>
-                                    She is <span class="hieght"></span> tall and wieghs <span class="wieght"></span>.
-    
-                                    <br>
-                                    She has a <span class="bodyType"></span> body type.
-                                    <br>
-                                    She has a <span class="bodyShape"></span> body shape.
-                                    <br>
-                                    She has a <span class="cupSize"></span> bust size.
-                                </div>
-    
-                                <hr class="thin-hr">
-    
-                                <!--HAIR INFO-->
-                                <div>
-                                    She has <span class="hairCut"></span> lengthed </span> <span class="hairType"></span>
-                                    hair.
-                                    <br>
-                                    Her hair is <span class="hairLength"></span>cm long.
-                                    <br>
-                                    The color of her hair is <span class="hairColor"></span>.
-                                    <br>
-    
-                                </div>
-                                <hr class="thin-hr">
-    
-                                <!--CAT EAR INFO-->
-                                <div>
-                                    <span class="name"></span> has <span class="earSize"></span> sized cat ears.
-                                    <br>
-                                    They have a <span class="earLength"></span> length to them.
-                                </div>
-                                <hr class="thin-hr">
-    
-                                <!--CAT TAIL INFO-->
-                                <div>
-                                    <span class="name"></span> has a <span class="tailSize"></span> sized tail.
-                                    <br>
-                                    It's <span class="tailLength"></span> in length.
-                                </div>
+                            <hr class="break-hr">
+
+                            <!--PHYSICAL INFO-->
+                            <div>
+                                She is <span class="hieght keyword"></span> tall and wieghs <span class="wieght keyword"></span>.
+                                <br>
+                                Her skin has a <span class="skinTone keyword"></span> tone to it.
+                                <br>
+                                She has a <span class="bodyType keyword"></span> body type with a <span class="bodyFigure keyword"></span> figure.
+                                <br>
+                                She has a <span class="cupSize keyword"></span> bust size.
+                            </div>
+
+                            <hr class="break-hr">
+
+                            <!--COSMETIC INFO-->
+                            <div>
+                                She has <span class="hairCut keyword"></span> lengthed <span class="hairType keyword"></span>
+                                hair.
+                                <br>
+                                Her hair is <span class="hairLength keyword"></span>cm long.
+                                <br>
+                                The color of her hair is <span class="hairColor keyword"></span>.
+                                <br>
+
+                            </div>
+                            <hr class="break-hr">
+
+                            <!--CAT EAR INFO-->
+                            <div>
+                                <span class="name"></span> has <span class="earSize keyword"></span> sized cat ears.
+                                <br>
+                                They are <span class="earLength keyword"></span> length cat ears.
+                            </div>
+                            <hr class="break-hr">
+
+                            <!--CAT TAIL INFO-->
+                            <div>
+                                <span class="name"></span> has a <span class="tailLength keyword"></span> lengthed <span class="tailSize keyword"></span> sized tail.
                             </div>
                         </div>
                     </div>
-    
                 </div>
+
             </div>
         </div>
+    </div>
 
     <div class="horns-footer">
         <div class="horns-footer-content">
@@ -365,6 +475,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/ImportJSON.js"></script>
     <script type="text/javascript" src="js/Catgirl.js"></script>
+    <script type="text/javascript" src="js/Tools.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
     <!-- Notes: -->
