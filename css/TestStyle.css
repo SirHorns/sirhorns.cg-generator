@@ -25,7 +25,7 @@ body{
 
 .catcard{
     height: min-content;
-    width: 800px;
+    width: 1500px;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -127,7 +127,7 @@ body{
     width: 100%;
 }
 
-.catcard-content-container-table{
+.catcard-content-container-wrapper{
     padding: 8px 8px 8px 8px;
     height: auto;
     border-radius: 5px;
@@ -135,6 +135,7 @@ body{
     align-items: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     background-color: var(--primary-light);
 
@@ -146,6 +147,10 @@ body{
     border-bottom-color: var(--secondary);
     border-left-color: var(--secondary);
     border-right-color: var(--secondary);
+}
+
+.catcard-content-container-wrapper > .wrapper{
+    flex:auto;
 }
 
 .catcard-content-container-table td{
@@ -230,12 +235,28 @@ td{
 
 .colorExample{
     height: 2px; 
-    width: 5px; 
-    background-color: rgb(0, 0, 0);
+    width: 6px; 
+    background-color: rgb(255, 255, 255);
     outline: 4px solid rgb(0, 0, 0);
 }
 
 #catCount{
     text-align: center;
     width: 50px;
+}
+
+.heterochromia{
+    display: none;
+}
+.eyeNormal{
+    display: block;
+}
+
+#heterochromiaCentral #heterochromiaComplete #heterochromiaSectoral {
+    display: none;
+}
+
+.keyword{
+    color: var(--text-on-primary);
+    font-weight: bold;
 }
